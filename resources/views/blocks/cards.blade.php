@@ -27,7 +27,8 @@
 
 		<div class="grid {{ $gridClass }} gap-8 mt-10">
 			@foreach ($r_cards as $item)
-			<div data-gsap-element="card" class="__card relative bg-white p-8">
+			<div data-gsap-element="card" class="__card relative bg-background radius px-8 py-12">
+				<span class="__number block mb-4 text-h4 text-primary">{{ $loop->iteration }}</span>
 				@if (!empty($item['image']['url']))
 				<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
 				@endif

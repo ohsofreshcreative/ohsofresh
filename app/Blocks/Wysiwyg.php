@@ -29,15 +29,6 @@ class Wysiwyg extends Block
 
 		$wysiwyg
 			->setLocation('block', '==', 'acf/wysiwyg') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Edytor treści',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_wysiwyg', ['label' => ''])

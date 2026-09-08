@@ -19,15 +19,24 @@
 		</figure>
 		@endif
 
-		<div class="absolute top-0 left-0 bottom-0 z-10 w-full md:w-[75%]" style="border-radius: 0 0 9999px 0; background: linear-gradient(90deg, #2265CB 0%, #181D84 100%);"></div>
-
 		<div class="__inside c-main grid grid-cols-1 md:grid-cols-2 items-center gap-6 relative z-20">
-			<div class="__content w-full py-52">
+			<div class="__content w-full py-52 w-full md:w-2/3">
 				@if (!empty($g_octa['header']))
 				<p data-gsap-element="header" class="block text-h3 text-white !m-header">{{ $g_octa['header'] }}</p>
 				@endif
 				@if (!empty($g_octa['txt']))
-				<div data-gsap-element="txt" class="text-white">{!! $g_octa['txt'] !!}</div>
+				<div data-gsap-element="txt" class="m-header">{!! $g_octa['txt'] !!}</div>
+				@endif
+
+				@if (!empty($g_octa['phone']) || !empty($g_octa['mail']))
+				<div data-gsap-element="data" class="__contact contact-info m-btn grid gap-3">
+					@if (!empty($g_octa['phone']))
+					<a class="__phone flex items-center w-max" href="tel:{{ $g_octa['phone'] }}">{{ $g_octa['phone'] }}</a>
+					@endif
+					@if (!empty($g_octa['mail']))
+					<a class="__mail flex items-center w-max" href="mailto:{{ $g_octa['mail'] }}">{{ $g_octa['mail'] }}</a>
+					@endif
+				</div>
 				@endif
 
 				<div class="inline-buttons m-btn">
@@ -54,7 +63,7 @@
 			</div>
 
 			@if ($form)
-			<div data-gsap-element="form" class="bg-white radius p-10 -mt-20 md:-mt-0 mb-30 md:mb-0">
+			<div data-gsap-element="form" class="">
 				<h4 class="!text-primary mb-4">{!! $g_octa['title'] !!}</h4>
 				{!! do_shortcode($g_octa['shortcode']) !!}
 			</div>

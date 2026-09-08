@@ -6,12 +6,12 @@ import path from 'path'
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const wpOrigin = env.WP_HOME || 'http://tsp.local'
+  const wpOrigin = env.WP_HOME || 'http://ohsofresh.local'
 
   return {
     server: {
-      host: 'tsp.local',
-      port: 5981,
+      host: 'ohsofresh.local',
+      port: 5100,
       strictPort: true,
       cors: true,
       proxy: {
@@ -22,13 +22,13 @@ export default defineConfig(({ command, mode }) => {
       },
       hmr: {
         protocol: 'ws',
-        host: 'tsp.local',
-        port: 5981,
+        host: 'ohsofresh.local',
+        port: 5100,
       },
     },
 
     base: command === 'build'
-      ? '/wp-content/themes/tsp/public/build/'
+      ? '/wp-content/themes/ohsofresh/public/build/'
       : '/build/',
 
     plugins: [

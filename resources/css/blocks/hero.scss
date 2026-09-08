@@ -1,2 +1,36 @@
 .b-hero {
+	-webkit-mask-image: linear-gradient(to top, transparent 5%, black 20%);
+	mask-image: linear-gradient(to top, transparent 5%, black 20%);
+
+	h1 strong,
+	.h1 strong {
+		font-weight: 600;
+		background: #e4261b;
+		background: linear-gradient(to left, #e4261b 0%, #f49e00 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	#heroVideoWrapper {
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			pointer-events: none;
+			background:
+				linear-gradient(0deg, #151923 0%, rgba(21, 25, 35, 0) 100%),
+				linear-gradient(90deg, #290751 0%, rgba(41, 7, 81, 0) 100%);
+		}
+	}
+
+	.video-fallback {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	#heroVideoWrapper.is-playing .video-fallback {
+		opacity: 0;
+		visibility: hidden;
+	}
 }

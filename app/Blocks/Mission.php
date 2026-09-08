@@ -29,15 +29,6 @@ class Mission extends Block
 
 		$mission
 			->setLocation('block', '==', 'acf/mission') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Nasza misja',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_mission', ['label' => ''])

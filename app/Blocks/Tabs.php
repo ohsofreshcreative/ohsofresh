@@ -2,17 +2,18 @@
 
 namespace App\Blocks;
 
+use App\Support\SectionClasses;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Tabs extends Block
 {
-	public $name = 'Zakładki';
-	public $description = 'tabs';
+	public $name = 'TABS';
+	public $description = 'Zakładki prezentujące etapy procesu';
 	public $slug = 'tabs';
 	public $category = 'formatting';
 	public $icon = 'table-row-after';
-	public $keywords = ['tabs', 'kafelki'];
+	public $keywords = ['tabs', 'zakładki', 'proces'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -25,54 +26,35 @@ class Tabs extends Block
 		$tabs = new FieldsBuilder('tabs');
 
 		$tabs
-			->setLocation('block', '==', 'acf/tabs') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Zakładki',
-				'open' => false,
-				'multi_expand' => true,
-			])
-			/*--- TAB #1 ---*/
-			->addTab('Treści', ['placement' => 'top'])
-			->addGroup('g_tabs', ['label' => ''])
-			->addText('header', ['label' => 'Nagłówek'])
-			->addTextarea('text', [
-				'label' => 'Opis',
-				'rows' => 4,
-				'new_lines' => 'br',
-			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
-			])
-			->endGroup()
+			->setLocation('block', '==', 'acf/tabs')
 
-			/*--- TAB #2 ---*/
-			->addTab('Kafelki', ['placement' => 'top'])
+			/*--- ZAKŁADKI ---*/
+
+			->addTab('Elementy', ['placement' => 'top'])
 			->addRepeater('r_tabs', [
-				'label' => 'Kafelki',
-				'layout' => 'table', // 'row', 'block', albo 'table'
+				'label' => 'Zakładki',
+				'layout' => 'table',
 				'min' => 1,
-				'button_label' => 'Dodaj kafelek'
+				'max' => 5,
+				'button_label' => 'Dodaj zakładkę',
 			])
 			->addText('tab', [
 				'label' => 'Nazwa zakładki',
-				'instructions' => 'Wpisz nazwę zakładki, do której ma trafić ten element (np. "Budownictwo"). Elementy o tej samej nazwie zostaną zgrupowane.',
 				'required' => 1,
 			])
 			->addImage('image', [
 				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
+				'return_format' => 'array',
 				'preview_size' => 'medium',
 			])
-			->addText('title', [
+			->addText('header', [
 				'label' => 'Nagłówek',
 			])
-			->addTextarea('text', [
-				'label' => 'Opis',
+			->addWysiwyg('text', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
 			])
 			->endRepeater()
 
@@ -111,35 +93,35 @@ class Tabs extends Block
 			])
 			->addSelect('background', [
 				'label' => 'Kolor tła',
-				'choices' => [
-					'none' => 'Brak (domyślne)',
-					'section-white' => 'Białe',
-					'section-light' => 'Jasne',
-					'section-gray' => 'Szare',
-					'section-brand' => 'Marki',
-					'section-gradient' => 'Gradient',
-					'section-dark' => 'Ciemne',
-				],
+				'choices' => SectionClasses::backgroundChoices(),
 				'default_value' => 'none',
-				'ui' => 0, // Ulepszony interfejs
+				'ui' => 0,
 				'allow_null' => 0,
 			]);
 
 		return $tabs;
 	}
 
-	public function with()
+	public function with(): array
 	{
-		return [
-			'g_tabs' => get_field('g_tabs'),
+		$fields = [
 			'r_tabs' => get_field('r_tabs'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-			'flip' => get_field('flip'),
-			'wide' => get_field('wide'),
-			'nomt' => get_field('nomt'),
-			'gap' => get_field('gap'),
-			'background' => get_field('background'),
+			'flip' => (bool) get_field('flip'),
+			'wide' => (bool) get_field('wide'),
+			'nomt' => (bool) get_field('nomt'),
+			'gap' => (bool) get_field('gap'),
+			'background' => get_field('background') ?: get_field('default_block_background', 'option') ?: 'none',
 		];
+
+		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
+			'flip' => 'order-flip',
+			'wide' => 'wide',
+			'nomt' => '!mt-0',
+			'gap' => 'wider-gap',
+		]);
+
+		return $fields;
 	}
 }

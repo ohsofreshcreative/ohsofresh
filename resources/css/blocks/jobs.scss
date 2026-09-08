@@ -1,0 +1,56 @@
+.b-jobs {
+  &.order-flip {
+    display: block;
+
+    .__main {
+      grid-column: 2;
+    }
+  }
+
+  .__summary {
+    margin-top: 0;
+  }
+
+  .__toggle-vertical {
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+
+  .__summary[aria-expanded='true'] .__toggle-vertical {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  .__dialog {
+    &::backdrop {
+      background: rgb(0 0 0 / 0.7);
+    }
+
+    &[open] {
+      animation: jobs-dialog-in 0.3s ease-out;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    &.order-flip .__main {
+      grid-column: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .__dialog[open] {
+      animation: none;
+    }
+  }
+}
+
+@keyframes jobs-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

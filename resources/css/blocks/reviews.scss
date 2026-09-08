@@ -3,9 +3,11 @@
 		.swiper-wrapper {
 			align-items: stretch;
 		}
+
 		.swiper-slide {
 			height: auto;
 		}
+
 		.__img img {
 			width: 56px;
 			height: 56px;
@@ -48,5 +50,14 @@
 
 	&.is-visible .review-popup__content {
 		transform: scale(1);
+	}
+}
+
+
+#baguetteBox-slider {
+	padding: 80px;
+
+	figcaption {
+		display: none !important;
 	}
 }

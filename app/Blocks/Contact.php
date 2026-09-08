@@ -31,15 +31,6 @@ class Contact extends Block
 		$contact
 			->setLocation('block', '==', 'acf/contact') // ważne!
 			/*--- FIELDS ---*/
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Kontakt',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- TAB #1 ---*/
 			->addTab('Dane', ['placement' => 'top'])
 			->addGroup('g_contact_1', ['label' => ''])
@@ -55,16 +46,37 @@ class Contact extends Block
 			->addText('mail', [
 				'label' => 'Adres e-mail',
 			])
-			->addTextarea('address', [
+			->addWysiwyg('address', [
 				'label' => 'Adres',
-				'rows' => 3,
-				'new_lines' => 'br',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
 			])
+			->addRepeater('r_contact', [
+				'label' => 'Social media',
+				'layout' => 'table', // 'row', 'block', albo 'table'
+				'min' => 1,
+				'button_label' => 'Dodaj kafelek'
+			])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'thumbnail',
+			])
+			->addUrl('link', [
+				'label' => 'Link URL',
+			])
+			->endRepeater()
 			->endGroup()
 			/*--- TAB #2 ---*/
 			->addTab('Formularz', ['placement' => 'top'])
 			->addGroup('g_contact_2', ['label' => ''])
 			->addText('title', ['label' => 'Tytuł'])
+			->addTextarea('text', [
+				'label' => 'Tekst',
+				'rows' => 3,
+				'new_lines' => 'br',
+			])
 			->addText('shortcode', [
 				'label' => 'Kod formularza',
 				'instructions' => 'Wklej kod formularza:  [contact-form-7 id="f12c470" title="Contact form 1"]',

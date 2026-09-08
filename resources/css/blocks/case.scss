@@ -1,0 +1,40 @@
+.b-case {
+  .__header {
+    --case-stroke: var(--color-brand-yellow);
+
+    color: var(--color-page);
+    text-shadow:
+      -1px -1px 0 var(--case-stroke),
+      1px -1px 0 var(--case-stroke),
+      -1px 1px 0 var(--case-stroke),
+      1px 1px 0 var(--case-stroke);
+
+    &.yellow-stroke {
+      --case-stroke: var(--color-brand-yellow);
+    }
+
+    &.orange-stroke {
+      --case-stroke: var(--color-brand-orange);
+    }
+
+    &.jasmine-stroke {
+      --case-stroke: var(--color-brand-jasmine);
+    }
+
+    &.purple-stroke {
+      --case-stroke: var(--color-brand-purple);
+    }
+
+    &.darkpurple-stroke {
+      --case-stroke: var(--color-brand-dark-purple);
+    }
+
+    &.blue-stroke {
+      --case-stroke: var(--color-brand-second);
+    }
+
+    &.darktxt {
+      color: var(--color-background-dark);
+    }
+  }
+}

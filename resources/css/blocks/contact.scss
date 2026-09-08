@@ -34,8 +34,12 @@
 		max-width: 40px;
 	}
 
+	.__address {
+		display: flex;
+	}
+
 	.__address::before {
-		content: url('/wp-content/uploads/2026/01/place.svg');
+		content: url('@images/address.svg');
 		margin-right: 16px;
 		position: relative;
 		top: 4px;

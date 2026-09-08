@@ -18,19 +18,20 @@
 	@endif
 
 	@if (!empty($g_banner['video']) || !empty($g_banner['image']))
-	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(90deg, #171F87 5.84%, rgba(23, 31, 135, 0.20) 100.47%);"></div>
+	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(21, 25, 35, 1) 0%, rgba(21, 25, 35, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.4) 100%);"></div>
 	@endif
 
-	@if (!empty($g_banner['shape']))
-	<img class="absolute -bottom-[109px] w-[2109px] max-w-none left-1/2 -translate-x-1/2" src="{{ get_template_directory_uri() }}/resources/images/banner-shape.svg" />
-	@else
-	<img class="absolute -bottom-[109px] w-[2109px] max-w-none left-1/2 -translate-x-1/2" src="{{ get_template_directory_uri() }}/resources/images/banner-shape2.svg" />
-	@endif
+<!-- 	@if (!empty($g_banner['video']) || !empty($g_banner['image']))
+	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(21, 25, 35, 0.85) 0%, rgba(21, 25, 35, 0) 60%), linear-gradient(90deg, rgba(21, 25, 35, 1) 0%, rgba(21, 25, 35, 0) 100%);"></div>
+	@endif -->
 
 	<div class=" __wrapper c-main relative z-10">
 		<div class="__content relative flex flex-col justify-center w-full md:w-10/12 lg:w-8/12 z-20 pt-48 pb-62">
-			<h1 data-gsap-element="header" class="text-h2 text-white">
+			<p data-gsap-element="header" class="text-h6 text-white/20">
 				{{ $g_banner['title'] }}
+			</p>
+			<h1 data-gsap-element="header" class="text-h2 text-white mt-2">
+				{{ $g_banner['header'] }}
 			</h1>
 			@if (!empty($g_banner['text']))
             <div data-gsap-element="text" class="text-white mt-4">
@@ -42,7 +43,9 @@
 				@if (!empty($g_banner['button1']))
 				<x-button
 					:href="$g_banner['button1']['url']"
-					variant="secondary"
+					:target="$g_banner['button1']['target'] ?? '_self'"
+					:rel="($g_banner['button1']['target'] ?? '') === '_blank' ? 'noopener noreferrer' : null"
+					variant="primary"
 					class=""
 					data-gsap-element="btn">
 					{{ $g_banner['button1']['title'] }}
@@ -52,7 +55,9 @@
 				@if (!empty($g_banner['button2']))
 				<x-button
 					:href="$g_banner['button2']['url']"
-					variant="white"
+					:target="$g_banner['button2']['target'] ?? '_self'"
+					:rel="($g_banner['button2']['target'] ?? '') === '_blank' ? 'noopener noreferrer' : null"
+					variant="outline"
 					class=""
 					data-gsap-element="btn">
 					{{ $g_banner['button2']['title'] }}

@@ -1,58 +1,61 @@
-<!--- offers -->
+<!--- offers --->
 
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	@class([ 'b-offers relative -smt overflow-hidden' ,
+	@class([ 'b-offers relative -smt' ,
 	$sectionClass=> filled($sectionClass),
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
 	])>
 
-	@if ($bgshape)
-	<img class="__bg-shape absolute inset-y-0 right-0 w-auto pointer-events-none" src="{{ get_template_directory_uri() }}/resources/images/bg-shape.svg" alt="">
-	@endif
+	<div class="__wrapper c-main">
+		<div class="__top grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] items-end gap-8">
+			<h3 data-gsap-element="header" class="text-white">{{ strip_tags($g_offers['header']) }}</h3>
+			<p data-gsap-element="text">{{ $g_offers['text'] }}</p>
+			@if (!empty($g_offers['button']))
+			<x-button
+				:href="$g_offers['button']['url']"
+				variant="outline"
+				class="justify-self-start md:justify-self-end"
+				data-gsap-element="btn">
+				{{ $g_offers['button']['title'] }}
+			</x-button>
+			@endif
+		</div>
 
-	<div class="__wrapper c-main relative">
-
-		@if (!empty($offer_items))
-		<div class="flex flex-col gap-20">
-			@foreach ($offer_items as $item)
-			<div data-gsap-element="item" class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-20 bg-white p-10 radius">
-
-				@if (!empty($item['image_url']))
-				<figure data-gsap-element="img" class="__img h-full">
+		@if (!empty($r_offers))
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+			@foreach ($r_offers as $item)
+			<div data-gsap-element="card" class="__card group relative overflow-hidden min-h-80 flex flex-col justify-center radius p-8">
+				@if (!empty($item['image']['url']))
+				<figure class="absolute inset-0 m-0">
 					<picture>
-						<img class="radius-img max-h-[504px] w-full object-cover" src="{{ $item['image_url'] }}" alt="{{ $item['image_alt'] }}">
+						<source srcset="{{ $item['image']['url'] }}" type="image/jpeg" />
+						<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
 					</picture>
 				</figure>
+				<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/20"></div>
 				@endif
-
-				<div class="__content">
-					@if (!empty($item['icon_url']))
-					<img data-gsap-element="icon" class="mb-4 w-16 h-16 object-contain" src="{{ $item['icon_url'] }}" alt="{{ $item['icon_alt'] }}">
+				@if (!empty($item['button1']))
+				<a href="{{ $item['button1']['url'] }}" class="absolute inset-0 z-20" aria-label="{{ $item['button1']['title'] }}"></a>
+				@endif
+				<div class="relative z-10">
+					@if (!empty($item['title']))
+					<p class="text-h5 text-white">{{ $item['title'] }}</p>
 					@endif
-
-					<h2 data-gsap-element="header" class="text-h4 m-header text-primary">{{ $item['title'] }}</h2>
-
-					@if (!empty($item['excerpt']))
-					<div data-gsap-element="txt" class="__txt">
-						<p>{{ $item['excerpt'] }}</p>
-					</div>
+					@if (!empty($item['text']))
+					<p class="m-header">{{ $item['text'] }}</p>
 					@endif
-
-					<div class="m-btn">
-						<x-button :href="$item['url']" variant="primary" data-gsap-element="btn">Zobacz</x-button>
-					</div>
+					@if (!empty($item['button1']))
+					<x-button variant="underline" class="group-hover:!underline transition-all m-btn">
+						{{ $item['button1']['title'] }}
+					</x-button>
+					@endif
 				</div>
-
 			</div>
-
 			@endforeach
 		</div>
 		@endif
 	</div>
-
-	</div>
-
 </section>

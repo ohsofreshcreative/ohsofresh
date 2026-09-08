@@ -30,16 +30,7 @@ class Accordion extends Block
 
 		$accordion
 			->setLocation('block', '==', 'acf/accordion') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
 
-			->addAccordion('accordion1', [
-				'label' => 'Rozwijane panele',
-				'open' => false,
-				'multi_expand' => true,
-			])
 
 			/*--- TAB #1 ---*/
 			->addTab('Treść', ['placement' => 'top'])
@@ -67,6 +58,12 @@ class Accordion extends Block
 				'layout' => 'table',
 				'min' => 1,
 				'button_label' => 'Dodaj panel',
+			])
+
+			->addImage('icon', [
+				'label' => 'Ikona',
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
 			])
 			->addText('title', [
 				'label' => 'Tytuł',

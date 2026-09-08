@@ -29,15 +29,6 @@ public $supports = [
 
 		$action
 			->setLocation('block', '==', 'acf/action') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'CTA - Wpis',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_action', ['label' => ''])

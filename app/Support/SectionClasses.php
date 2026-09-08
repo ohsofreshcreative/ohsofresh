@@ -5,6 +5,24 @@ namespace App\Support;
 class SectionClasses
 {
 	/**
+	 * Zwraca dostępne warianty tła sekcji dla pól ACF.
+	 *
+	 * @return array<string, string>
+	 */
+	public static function backgroundChoices(): array
+	{
+		return [
+			'none' => 'Brak (domyślne)',
+			'section-white' => 'Białe',
+			'section-light' => 'Jasne',
+			'section-primary' => 'Podstawowe',
+			'section-secondary' => 'Drugorzędne',
+			'section-gradient' => 'Gradient',
+			'section-dark' => 'Ciemne',
+		];
+	}
+
+	/**
 	 * Buduje string klas na podstawie mapy pól boolean -> klasy oraz pola tła.
 	 *
 	 * @param array<string, mixed> $fields

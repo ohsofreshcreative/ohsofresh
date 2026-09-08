@@ -27,15 +27,6 @@ class Cards extends Block
 
 		$cards
 			->setLocation('block', '==', 'acf/cards') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Kafelki',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_cards', ['label' => ''])

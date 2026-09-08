@@ -1,140 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
+  @php
+    global $wp_query;
 
-@php
-$term = get_queried_object();
-$categories = get_categories();
+    $term = get_queried_object();
+    $category_header = get_field('category_header', $term) ?: single_cat_title('', false);
+    $category_description = get_field('category_description', $term) ?: term_description($term);
+    $cta = get_field('g_octa', 'option') ?: [];
+    $pagination = paginate_links([
+      'total' => $wp_query->max_num_pages,
+      'current' => max(1, (int) get_query_var('paged')),
+      'type' => 'array',
+      'prev_text' => '<span aria-hidden="true">‹</span><span class="sr-only">Poprzednia strona</span>',
+      'next_text' => '<span aria-hidden="true">›</span><span class="sr-only">Następna strona</span>',
+    ]);
+  @endphp
 
-$category_header = get_field('category_header', $term);
-$category_description = get_field('category_description', $term);
-$category_image = get_field('category_image', $term);
+  <section data-gsap-anim="section" class="category-archive -menu-pt">
+    <div class="c-main pt-6 md:pt-10 -spb">
+      <nav data-gsap-element="bread" class="__breadcrumbs" aria-label="Okruszki">
+        @if (function_exists('yoast_breadcrumb'))
+          {!! yoast_breadcrumb('', '', false) !!}
+        @else
+          <a href="{{ home_url('/') }}">{{ get_bloginfo('name') }}</a>
+          <span aria-hidden="true">/</span>
+          <span>{{ $category_header }}</span>
+        @endif
+      </nav>
 
-$cta = get_field('g_octa', 'option');
-$form = !empty($cta['shortcode']);
+      <header class="__header w-full lg:w-3/5 mt-12">
+        <h1 data-gsap-element="header" class="text-h2 text-white">{{ $category_header }}</h1>
 
-// Pobranie pól ACF dla sekcji 'bottom'
-$section_id = $bottom['section_id'] ?? '';
-$section_class = $bottom['section_class'] ?? '';
-$flip = $bottom['flip'] ?? false;
+        @if (!empty($category_description))
+          <div data-gsap-element="txt" class="__description text-lg leading-relaxed mt-6">
+            {!! $category_description !!}
+          </div>
+        @endif
+      </header>
 
-// Przygotowanie klas CSS
-$sectionClass = '';
-$sectionClass .= $flip ? ' order-flip' : '';
+      @if (have_posts())
+        <div class="__grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mt-12">
+          @while (have_posts())
+            @php
+              the_post();
+              $post_categories = get_the_category();
+              $post_category = !empty($post_categories) ? $post_categories[0] : null;
+            @endphp
 
-// Wygenerowanie unikalnego ID dla SVG
-$unique_id = 'clip_'.uniqid();
-@endphp
+            <article @php(post_class('__card group')) data-gsap-element="card">
+              <a href="{{ get_permalink() }}" class="block">
+                @if (has_post_thumbnail())
+                  <figure class="__img img-m radius overflow-hidden m-0">
+                    {!! get_the_post_thumbnail(null, 'large', [
+                      'class' => 'w-full h-full object-cover',
+                      'loading' => 'lazy',
+                    ]) !!}
+                  </figure>
+                @endif
 
-<div class="hero category-header relative">
-	@if(!empty($category_image['url']))
-	<figure class="absolute inset-0 m-0 z-0">
-		<picture>
-			<img src="{{ $category_image['url'] }}" alt="" class="w-full h-full object-cover object-center">
-		</picture>
-	</figure>
-	@endif
-	<div class="absolute inset-0 bg-primary @if(!empty($category_image['url'])) opacity-80 @endif"></div>
-	<div data-gsap-element="bread" class="__breadcrumb mb-4">
-		@if (function_exists('yoast_breadcrumb'))
-		{!! yoast_breadcrumb('<p id="breadcrumbs">','</p>') !!}
-		@endif
-	</div>
-	<div class="__wrapper c-main relative z-10 pt-60 pb-26">
-		<div class="__content w-full md:w-2/3">
-			<h2 class="text-white m-header">
-				{!! $category_header ?: get_the_archive_title() !!}
-			</h2>
-			@if ($category_description)
-			<div class="text-white text-xl">
-				{!! $category_description !!}
-			</div>
-			@endif
-		</div>
-	</div>
-</div>
+                <div class="__content pt-5">
+                  @if ($post_category)
+                    <span class="block text-primary text-sm font-semibold mb-2">
+                      {{ $post_category->name }}
+                    </span>
+                  @endif
 
-</div>
+                  <h2 class="text-h7 text-white transition-colors group-hover:text-primary">
+                    {{ get_the_title() }}
+                  </h2>
+                </div>
+              </a>
+            </article>
+          @endwhile
+        </div>
 
+        @if (!empty($pagination))
+          <nav class="__pagination" aria-label="Paginacja wpisów">
+            @foreach ($pagination as $link)
+              {!! $link !!}
+            @endforeach
+          </nav>
+        @endif
+      @else
+        <div class="__empty py-20">
+          <h2 class="text-h5 text-white">Brak wpisów w tej kategorii.</h2>
+        </div>
+      @endif
+    </div>
+  </section>
 
-
-@if (have_posts())
-<div class="__posts c-main !mt-10 posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-	@while (have_posts()) @php(the_post())
-
-	@includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
-	@endwhile
-</div>
-
-{{-- {!! get_the_posts_navigation() !!} --}}
-{!! the_posts_pagination() !!}
-@else
-<div class="mt-20 mb-20">
-	<div class="c-main">
-		<h3 class="">Brak wpisów w tej kategorii.</h3>
-		<a class="main-btn m-btn" href="/wszystkie-wpisy/">Sprawdź wszystkie wpisy</a>
-	</div>
-</div>
-@endif
-
-<!-- bottom-block -->
-
-<section class="b-cta relative -smt">
-
-	<div class="__wrapper relative overflow-hidden">
-
-		@if (!empty($cta['image']['url']))
-		<figure class="absolute inset-0 m-0 z-0">
-			<picture>
-				<img src="{{ $cta['image']['url'] }}" alt="" class="w-full h-full object-cover object-right">
-			</picture>
-		</figure>
-		@endif
-
-		<div class="absolute top-0 left-0 bottom-0 z-10 w-full md:w-[75%]" style="border-radius: 0 0 9999px 0; background: linear-gradient(90deg, #2265CB 0%, #181D84 100%);"></div>
-
-		<div class="__inside c-main grid grid-cols-1 md:grid-cols-2 items-center gap-6 relative z-20">
-			<div class="__content w-full py-52">
-				@if (!empty($cta['header']))
-				<p data-gsap-element="header" class="block text-h3 text-white !m-header">{{ $cta['header'] }}</p>
-				@endif
-				@if (!empty($cta['txt']))
-				<div data-gsap-element="txt" class="text-white">{!! $cta['txt'] !!}</div>
-				@endif
-
-				<div class="inline-buttons m-btn">
-					@if (!empty($cta['button1']))
-					<x-button
-						:href="$cta['button1']['url']"
-						variant="white"
-						class=""
-						data-gsap-element="btn">
-						{{ $cta['button1']['title'] }}
-					</x-button>
-					@endif
-
-					@if (!empty($cta['button2']))
-					<x-button
-						:href="$cta['button2']['url']"
-						variant="secondary"
-						class=""
-						data-gsap-element="btn">
-						{{ $cta['button2']['title'] }}
-					</x-button>
-					@endif
-				</div>
-			</div>
-
-			<!-- 	@if ($form)
-			<div data-gsap-element="form" class="bg-white radius p-10 -mt-20 md:-mt-0 mb-30 md:mb-0">
-				<h4 class="!text-primary mb-4">{!! $cta['title'] !!}</h4>
-				{!! do_shortcode($cta['shortcode']) !!}
-			</div>
-			@endif -->
-		</div>
-
-	</div>
-
-</section>
-
+  @if (!empty(array_filter($cta)))
+    @include('blocks.cta', [
+      'g_octa' => $cta,
+      'form' => !empty($cta['shortcode']),
+      'section_id' => '',
+      'section_class' => '',
+      'sectionClass' => '',
+      'background' => 'none',
+    ])
+  @endif
 @endsection

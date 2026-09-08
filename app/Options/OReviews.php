@@ -20,6 +20,7 @@ class Oreviews extends Options
 
 		$oreviews
 			->addText('header', ['label' => 'Nagłówek'])
+			->addTextArea('txt', ['label' => 'Treść'])
 			->addRepeater('r_reviews', [
 				'label'        => 'Opinie',
 				'layout'       => 'table',
@@ -39,6 +40,13 @@ class Oreviews extends Options
 				'label' => 'Obraz',
 				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
+			])
+			->addImage('reference', [
+				'label' => 'Referencje (JPG)',
+				'instructions' => 'Zdjęcie otwierane po kliknięciu przycisku „Zobacz referencje”.',
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
+				'mime_types' => 'jpg,jpeg',
 			])
 			->addText('name', [
 				'label' => 'Imię i nazwisko',

@@ -24,6 +24,7 @@ run/
 
 # === Deployment pliki pomocnicze ===
 deploy/
+old/
 
 # === Env ===
 .env

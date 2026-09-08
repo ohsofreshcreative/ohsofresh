@@ -29,15 +29,6 @@ class Whyus extends Block
 
 		$whyus
 			->setLocation('block', '==', 'acf/whyus') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Dlaczego my?',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- TAB #1: Kafelek 1 (Ikona + Tytuł) ---*/
 			->addTab('Kafelek 1 (Ikona)', ['placement' => 'top'])
 			->addGroup('tile_1', ['label' => 'Pierwszy Kafelek (Jasnoniebieski)'])

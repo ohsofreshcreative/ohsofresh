@@ -29,15 +29,6 @@ class Image extends Block
 
 		$image
 			->setLocation('block', '==', 'acf/image') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Obraz',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_image', ['label' => ''])

@@ -25,6 +25,17 @@ add_action('pre_get_posts', function ($q) {
       $q->set('post_type', 'produkty');
     }
   }
+
+	if ($q->is_category()) {
+		if ($q->is_category('baza-pojec')) {
+			$q->set('posts_per_page', -1);
+			$q->set('orderby', 'title');
+			$q->set('order', 'ASC');
+			return;
+		}
+
+		$q->set('posts_per_page', 15);
+	}
 });
 
 

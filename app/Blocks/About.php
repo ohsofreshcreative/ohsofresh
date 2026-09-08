@@ -29,15 +29,6 @@ public $supports = [
 
 		$about
 			->setLocation('block', '==', 'acf/about') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'O firmie',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_about', ['label' => ''])

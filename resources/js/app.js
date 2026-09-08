@@ -18,8 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
-  if (document.querySelector('.b-values')) import('./blocks/values');
   if (document.querySelector('.b-catalogues')) import('./blocks/catalogues');
+  if (document.querySelector('.b-jobs')) import('./blocks/jobs');
+  if (document.querySelector('.b-proces')) import('./blocks/proces');
+  if (document.querySelector('.b-scope')) import('./blocks/scope');
 });
 
 /*--- NOT USED ---*/
@@ -108,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
         filter: 'blur(0px)',
         duration: 1,
         ease: 'power2.out',
-        stagger: { amount: 1.5, each: 0.1 },
+        stagger: { amount: 0.5, each: 0.1 },
         scrollTrigger: {
           trigger: section,
           start: 'top 80%',

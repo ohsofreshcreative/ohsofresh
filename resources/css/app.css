@@ -10,75 +10,111 @@
   /* base */
   --body: 42 63 80; /* #2A3F50 */
 
-/* PRIMARY (lewa kolumna – granat) */
---primary: 23 28 132;   /* #171C84 */
---p-hover: 5 6 26;      /* #05061A */
+/* PRIMARY – gold */
+--primary: 244 158 0;   /* #F49E00 */
+--p-hover: 203 132 0;   /* #CB8400 */
 
---p-50: 200 202 240;    /* #C8CAF0 */
---p-100: 168 170 221;   /* #A8AADD */
---p-200: 133 136 204;   /* #8588CC */
---p-300: 92 96 182;     /* #5C60B6 */
---p-400: 57 61 162;     /* #393DA2 */
---p-500: 23 28 132;     /* #171C84 */
---p-600: 19 23 110;     /* #13176E */
---p-700: 15 19 88;      /* #0F1358 */
---p-800: 12 14 66;      /* #0C0E42 */
---p-900: 8 9 44;        /* #08092C */
---p-dark: 5 6 26;       /* #05061A */
+--p-100: 253 236 204;   /* #FDECCC */
+--p-200: 251 223 170;   /* #FBDFAA */
+--p-300: 250 207 128;   /* #FACF80 */
+--p-400: 248 190 85;    /* #F8BE55 */
+--p-500: 246 174 42;    /* #F6AE2A */
+--p-600: 203 132 0;     /* #CB8400 */
+--p-700: 163 105 0;     /* #A36900 */
+--p-800: 122 79 0;      /* #7A4F00 */
+--p-900: 81 53 0;       /* #513500 */
+--p-dark: 49 32 0;      /* #312000 */
 
---action: rgb(23, 28, 132);
+--action: rgb(244, 158, 0);
 
-/* SECONDARY (niebieski) */
---secondary: 38 130 232;  /* #2682E8 */
---s-hover: 32 108 193;    /* #206CC1 */
+/* SECONDARY – red */
+--secondary: 228 38 27;   /* #E4261B */
+--s-hover: 190 32 23;     /* #BE2017 */
 
---s-50: 212 230 250;    /* #D4E6FA */
---s-100: 183 213 247;   /* #B7D5F7 */
---s-200: 146 192 243;   /* #92C0F3 */
---s-300: 110 172 240;   /* #6EACF0 */
---s-400: 74 151 236;    /* #4A97EC */
---s-500: 38 130 232;    /* #2682E8 */
---s-600: 32 108 193;    /* #206CC1 */
---s-700: 25 87 155;     /* #19579B */
---s-800: 19 65 116;     /* #134174 */
---s-900: 13 43 77;      /* #0D2B4D */
---s-dark: 8 26 46;      /* #081A2E */
+--s-100: 250 212 209;   /* #FAD4D1 */
+--s-200: 246 183 179;   /* #F6B7B3 */
+--s-300: 242 147 141;   /* #F2938D */
+--s-400: 237 110 103;   /* #ED6E67 */
+--s-500: 233 74 65;     /* #E94A41 */
+--s-600: 190 32 23;     /* #BE2017 */
+--s-700: 152 25 18;     /* #981912 */
+--s-800: 114 19 14;     /* #72130E */
+--s-900: 76 13 9;       /* #4C0D09 */
+--s-dark: 46 8 5;       /* #2E0805 */
 
+/* THIRD – magenta */
+--third: 158 26 170;    /* #9E1AAA */
+--t-hover: 132 22 142;  /* #84168E */
 
-/* THIRD (różowy/fioletowy) */
---third: 248 129 240; /* #F881F0 */
---t-hover: 207 108 200; /* #CF6CC8 */
+--t-100: 236 209 238;   /* #ECD1EE */
+--t-200: 223 179 227;   /* #DFB3E3 */
+--t-300: 207 141 213;   /* #CF8DD5 */
+--t-400: 190 102 198;   /* #BE66C6 */
+--t-500: 174 64 184;    /* #AE40B8 */
+--t-600: 132 22 142;    /* #84168E */
+--t-700: 105 17 113;    /* #691171 */
+--t-800: 79 13 85;      /* #4F0D55 */
+--t-900: 53 9 57;       /* #350939 */
+--t-dark: 32 5 34;      /* #200522 */
 
---t-50: 254 230 252;  /* #FEE6FC */
---t-100: 253 213 250; /* #FDD5FA */
---t-200: 252 192 248; /* #FCC0F8 */
---t-300: 250 171 245; /* #FAABF5 */
---t-400: 249 150 243; /* #F996F3 */
---t-500: 248 129 240; /* #F881F0 */
---t-600: 207 108 200; /* #CF6CC8 */
---t-700: 165 86 160;  /* #A556A0 */
---t-800: 124 65 120;  /* #7C4178 */
---t-900: 83 43 80;    /* #532B50 */
---t-dark: 50 26 48;   /* #321A30 */
+/* FOURTH – purple */
+--fourth: 109 0 238;    /* #6D00EE */
+--fo-hover: 91 0 198;   /* #5B00C6 */
+
+--fo-100: 226 204 252;  /* #E2CCFC */
+--fo-200: 206 170 249;  /* #CEAAF9 */
+--fo-300: 182 128 247;  /* #B680F7 */
+--fo-400: 158 85 244;   /* #9E55F4 */
+--fo-500: 133 42 241;   /* #852AF1 */
+--fo-600: 91 0 198;     /* #5B00C6 */
+--fo-700: 73 0 159;     /* #49009F */
+--fo-800: 55 0 119;     /* #370077 */
+--fo-900: 36 0 79;      /* #24004F */
+--fo-dark: 22 0 48;     /* #160030 */
+
+/* FIFTH – electric blue */
+--fifth: 76 63 252;     /* #4C3FFC */
+--fi-hover: 63 53 210;  /* #3F35D2 */
+
+--fi-100: 219 217 254;  /* #DBD9FE */
+--fi-200: 195 191 254;  /* #C3BFFE */
+--fi-300: 166 159 254;  /* #A69FFE */
+--fi-400: 136 127 253;  /* #887FFD */
+--fi-500: 106 95 253;   /* #6A5FFD */
+--fi-600: 63 53 210;    /* #3F35D2 */
+--fi-700: 51 42 168;    /* #332AA8 */
+--fi-800: 38 32 126;    /* #26207E */
+--fi-900: 25 21 84;     /* #191554 */
+--fi-dark: 15 13 50;    /* #0F0D32 */
 
   /* neutrals / fixed backgrounds */
   --text-body: rgb(var(--p-800));
   --gray: #2a3f50;
-  --bg: #F4F9FF;
+  --bg: #151923;
   --bg-light: rgb(var(--s-100));
-  --bg-lighter: rgb(var(--s-50));
-  --bg-brand: #002704;
-  --bg-dark: #071622;
+  --bg-brand: #151923;
+  --bg-dark: #0f1219;
+
+  /* kolory marki przeniesione z motywu OLD */
+  --brand-body: #151923;
+  --brand-primary: #f49e00;
+  --brand-second: #4c3ffc;
+  --brand-hover: #fdbb40;
+  --brand-yellow: #f49e00;
+  --brand-orange: #e4261b;
+  --brand-jasmine: #933895;
+  --brand-purple: #6d00ee;
+  --brand-dark-purple: #5813a9;
+  --brand-bg-dark: #0f1219;
 }
 
 @theme {
   /* base */
   --color-body: rgb(var(--body));
 
-  /* primary */
+  /* primary – gold */
   --color-primary: rgb(var(--primary));
   --color-primary-hover: rgb(var(--p-hover));
-  --color-primary-50: rgb(var(--p-50));
   --color-primary-100: rgb(var(--p-100));
   --color-primary-200: rgb(var(--p-200));
   --color-primary-300: rgb(var(--p-300));
@@ -90,7 +126,7 @@
   --color-primary-900: rgb(var(--p-900));
   --color-primary-dark: rgb(var(--p-dark));
 
-  /* secondary */
+  /* secondary – red */
   --color-secondary: rgb(var(--secondary));
   --color-secondary-hover: rgb(var(--s-hover));
   --color-secondary-100: rgb(var(--s-100));
@@ -104,7 +140,7 @@
   --color-secondary-900: rgb(var(--s-900));
   --color-secondary-dark: rgb(var(--s-dark));
 
-  /* third */
+  /* third – magenta */
   --color-third: rgb(var(--third));
   --color-third-hover: rgb(var(--t-hover));
   --color-third-100: rgb(var(--t-100));
@@ -118,6 +154,34 @@
   --color-third-900: rgb(var(--t-900));
   --color-third-dark: rgb(var(--t-dark));
 
+  /* fourth – purple */
+  --color-fourth: rgb(var(--fourth));
+  --color-fourth-hover: rgb(var(--fo-hover));
+  --color-fourth-100: rgb(var(--fo-100));
+  --color-fourth-200: rgb(var(--fo-200));
+  --color-fourth-300: rgb(var(--fo-300));
+  --color-fourth-400: rgb(var(--fo-400));
+  --color-fourth-500: rgb(var(--fo-500));
+  --color-fourth-600: rgb(var(--fo-600));
+  --color-fourth-700: rgb(var(--fo-700));
+  --color-fourth-800: rgb(var(--fo-800));
+  --color-fourth-900: rgb(var(--fo-900));
+  --color-fourth-dark: rgb(var(--fo-dark));
+
+  /* fifth – electric blue */
+  --color-fifth: rgb(var(--fifth));
+  --color-fifth-hover: rgb(var(--fi-hover));
+  --color-fifth-100: rgb(var(--fi-100));
+  --color-fifth-200: rgb(var(--fi-200));
+  --color-fifth-300: rgb(var(--fi-300));
+  --color-fifth-400: rgb(var(--fi-400));
+  --color-fifth-500: rgb(var(--fi-500));
+  --color-fifth-600: rgb(var(--fi-600));
+  --color-fifth-700: rgb(var(--fi-700));
+  --color-fifth-800: rgb(var(--fi-800));
+  --color-fifth-900: rgb(var(--fi-900));
+  --color-fifth-dark: rgb(var(--fi-dark));
+
   --color-gray: var(--gray);
   --color-action: var(--action);
 
@@ -126,6 +190,18 @@
   --color-background-brand: var(--bg-brand);
   --color-background-dark: var(--bg-dark);
 
+  /* utility marki: text-brand-*, bg-brand-*, border-brand-* */
+  --color-brand-body: var(--brand-body);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-second: var(--brand-second);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-jasmine: var(--brand-jasmine);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-dark-purple: var(--brand-dark-purple);
+  --color-brand-bg-dark: var(--brand-bg-dark);
+
   --color-primary-light: var(--color-primary-300);
   --color-primary-lighter: var(--color-primary-100);
 
@@ -133,14 +209,14 @@
   --color-secondary-lighter: var(--color-secondary-100);
 
   --color-muted: var(--color-secondary-500);
-  --gradient: linear-gradient(90deg, #2265CB 0%, #181D84 100%);
-  --gradient-light: linear-gradient(-90deg, #0E3A2D 0%, #0A533D 100%);
-  --gradient-s: linear-gradient(-90deg, #DE855D 0%, #D37A51 100%);
+  --gradient: linear-gradient(90deg, #4C3FFC 0%, #6D00EE 100%);
+  --gradient-light: linear-gradient(90deg, #F49E00 0%, #E4261B 100%);
+  --gradient-s: linear-gradient(90deg, #9E1AAA 0%, #6D00EE 100%);
 
 }
 
 @utility m-header {
-  margin-bottom: var(--m-header);
+  margin-top: var(--m-header);
 }
 @utility m-title {
   padding-bottom: var(--m-title);
@@ -161,8 +237,22 @@
 
 /*-- USED ---*/
 @import '../css/blocks/hero.scss';
-@import '../css/blocks/about.scss';
+@import '../css/blocks/how.scss';
 @import '../css/blocks/values.scss';
+@import '../css/blocks/offer.scss';
+@import '../css/blocks/top.scss';
+@import '../css/blocks/works.scss';
+@import '../css/blocks/tabs.scss';
+@import '../css/blocks/attributes.scss';
+@import '../css/blocks/carrer.scss';
+@import '../css/blocks/jobs.scss';
+@import '../css/blocks/proces.scss';
+@import '../css/blocks/scope.scss';
+@import '../css/blocks/project.scss';
+@import '../css/blocks/case.scss';
+@import '../css/blocks/reach.scss';
+/*-- NOT USED ---*/
+@import '../css/blocks/about.scss';
 @import '../css/blocks/content.scss';
 @import '../css/blocks/cta.scss';
 @import '../css/blocks/whyus.scss';
@@ -180,7 +270,6 @@
 @import '../css/blocks/map.scss';
 @import '../css/blocks/catalogues.scss';
 @import '../css/blocks/action.scss';
-/*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';
 @import '../css/blocks/cards.scss';
 @import '../css/blocks/category-posts.scss';
@@ -189,5 +278,3 @@
 @import '../css/blocks/image.scss';
 @import '../css/blocks/numbers.scss';
 @import '../css/blocks/overlap.scss';
-@import '../css/blocks/proces.scss';
-@import '../css/blocks/tabs.scss';

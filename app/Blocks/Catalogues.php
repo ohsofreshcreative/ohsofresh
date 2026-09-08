@@ -27,15 +27,6 @@ class Catalogues extends Block
 
 		$catalogues
 			->setLocation('block', '==', 'acf/catalogues')
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Katalogi',
-				'open' => false,
-				'multi_expand' => true,
-			])
 
 			/*--- TAB #2 ---*/
 			->addTab('Grupy katalogów', ['placement' => 'top'])

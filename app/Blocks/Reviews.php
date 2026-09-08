@@ -27,15 +27,6 @@ class Reviews extends Block
 
 		$reviews
 			->setLocation('block', '==', 'acf/reviews') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Slider - Opinie',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- FIELDS ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_reviews', ['label' => ''])
@@ -87,6 +78,7 @@ class Reviews extends Block
 	{
 		$fields = [
 			'header'    => get_field('header', 'option'),
+			'txt'       => get_field('txt', 'option'),
 			'r_reviews' => get_field('r_reviews', 'option') ?: [],
 
 			'section_id' => get_field('section_id'),

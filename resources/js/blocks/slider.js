@@ -35,7 +35,7 @@ const initSlider = () => {
       loop: false,
       grabCursor: true,
       slidesPerView: 'auto',
-      spaceBetween: 80,
+      spaceBetween: 32,
       navigation: {
         nextEl: slider.querySelector('.__next'),
         prevEl: slider.querySelector('.__prev'),

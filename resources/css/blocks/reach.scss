@@ -1,0 +1,11 @@
+.b-reach {
+  .__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-brand-second) 80%, transparent) 0%,
+        transparent 100%
+      ),
+      color-mix(in srgb, var(--color-background-dark) 70%, transparent);
+  }
+}

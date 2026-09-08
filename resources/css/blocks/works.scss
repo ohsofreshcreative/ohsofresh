@@ -1,0 +1,37 @@
+.b-works {
+
+  .__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 96px;
+  }
+
+  .__pagination .page-numbers {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid rgb(255 255 255 / 30%);
+    border-radius: 50%;
+    color: #fff;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .__pagination .page-numbers:hover,
+  .__pagination .page-numbers.current {
+    border-color: var(--brand-primary);
+    background: var(--brand-primary);
+  }
+
+  &.order-flip {
+    display: block;
+  }
+
+  @media (max-width: 1023px) {
+    .__pagination {
+      margin-top: 64px;
+    }
+  }
+}

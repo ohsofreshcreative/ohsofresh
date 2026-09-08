@@ -1,85 +1,79 @@
-document.querySelectorAll('section.b-tabs').forEach(function (root) {
-  const nav = root.querySelector('.js-tabs-nav');
-  if (!nav) return;
+document.querySelectorAll('.b-tabs .js-tabs').forEach((root) => {
+  if (root.dataset.tabsReady === 'true') return;
 
-  const tabs = Array.from(nav.querySelectorAll('.tab_btn'));
-  if (!tabs.length) return;
+  const nav = root.querySelector('[role="tablist"]');
+  const navScroll = root.querySelector('.__nav-scroll');
+  const indicator = root.querySelector('.__active-bg');
+  const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(root.querySelectorAll('[role="tabpanel"]'));
 
-  let active = tabs.findIndex(t => t.classList.contains('active'));
-  if (active < 0) active = 0;
-  tabs.forEach((btn, i) => btn.classList.toggle('active', i === active));
+  if (!nav || !indicator || !tabs.length || tabs.length !== panels.length) return;
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.dataset.tabsReady = 'true';
 
-  // ---------- WSPÓLNA MAPA ----------
-  const mapEl = root.querySelector('.js-osm-shared');
-  let sharedMap = null;
-  const markers = [];
+  let activeIndex = Math.max(
+    0,
+    tabs.findIndex((tab) => tab.classList.contains('is-active'))
+  );
 
-  const initSharedMap = () => {
-    if (sharedMap || !mapEl || typeof L === 'undefined') return;
+  const updateIndicator = () => {
+    const activeTab = tabs[activeIndex];
 
-    let locations = [];
-    try { locations = JSON.parse(mapEl.dataset.locations || '[]'); } catch (e) {}
-    if (!locations.length) return;
+    indicator.style.setProperty('--tabs-active-left', `${activeTab.offsetLeft}px`);
+    indicator.style.setProperty('--tabs-active-width', `${activeTab.offsetWidth}px`);
+  };
 
-    const zoom = parseInt(mapEl.dataset.zoom || '12', 10);
+  const activate = (nextIndex, { focus = false, scroll = false } = {}) => {
+    activeIndex = (nextIndex + tabs.length) % tabs.length;
 
-    sharedMap = L.map(mapEl, { scrollWheelZoom: false });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://cartodb.com/attributions">CARTO</a>'
-    }).addTo(sharedMap);
+    tabs.forEach((tab, index) => {
+      const isActive = index === activeIndex;
 
-    const latlngs = [];
-    locations.forEach((loc) => {
-      const lat = parseFloat(String(loc.lat).trim());
-      const lng = parseFloat(String(loc.lng).trim());
-      if (isNaN(lat) || isNaN(lng)) return;
-
-      const marker = L.marker([lat, lng]).addTo(sharedMap);
-      const popupHtml = (loc.address || loc.label || '').replace(/\n/g, '<br>');
-      if (popupHtml) marker.bindPopup(popupHtml);
-      markers.push({ lat, lng, marker });
-      latlngs.push([lat, lng]);
+      tab.classList.toggle('is-active', isActive);
+      tab.setAttribute('aria-selected', String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      panels[index].hidden = !isActive;
     });
 
-    if (latlngs.length === 1) {
-      sharedMap.setView(latlngs[0], zoom);
-    } else if (latlngs.length > 1) {
-      sharedMap.fitBounds(L.latLngBounds(latlngs), { padding: [30, 30] });
+    updateIndicator();
+
+    const activeTab = tabs[activeIndex];
+    if (focus) activeTab.focus();
+
+    if (scroll && navScroll && navScroll.scrollWidth > navScroll.clientWidth) {
+      activeTab.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
     }
   };
 
-  const focusFromBtn = (btn) => {
-    if (!sharedMap || !btn) return;
-    const lat = parseFloat(btn.dataset.mapLat);
-    const lng = parseFloat(btn.dataset.mapLng);
-    if (isNaN(lat) || isNaN(lng)) return;
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activate(index, { scroll: true }));
 
-    const found = markers.find(m =>
-      Math.abs(m.lat - lat) < 1e-5 && Math.abs(m.lng - lng) < 1e-5
-    );
+    tab.addEventListener('keydown', (event) => {
+      let nextIndex = null;
 
-    if (prefersReduced) {
-      sharedMap.setView([lat, lng], sharedMap.getZoom());
-    } else {
-      sharedMap.flyTo([lat, lng], Math.max(sharedMap.getZoom(), 14), { duration: 0.7 });
-    }
-    if (found) found.marker.openPopup();
-  };
+      if (event.key === 'ArrowRight') nextIndex = activeIndex + 1;
+      if (event.key === 'ArrowLeft') nextIndex = activeIndex - 1;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = tabs.length - 1;
 
-  initSharedMap();
-  if (sharedMap) setTimeout(() => sharedMap.invalidateSize(), 50);
-  focusFromBtn(tabs[active]);
+      if (nextIndex === null) return;
 
-  tabs.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      if (i === active) return;
-      tabs[active].classList.remove('active');
-      btn.classList.add('active');
-      active = i;
-      focusFromBtn(btn);
+      event.preventDefault();
+      activate(nextIndex, { focus: true, scroll: true });
     });
   });
+
+  requestAnimationFrame(updateIndicator);
+
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(updateIndicator).observe(nav);
+  } else {
+    window.addEventListener('resize', updateIndicator);
+  }
 });

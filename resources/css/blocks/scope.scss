@@ -1,0 +1,110 @@
+.b-scope {
+	&.order-flip {
+		display: block;
+	}
+
+	.__nav-scroll {
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.__tab {
+		transition:
+			color 200ms ease,
+			background-color 200ms ease,
+			border-color 200ms ease,
+			transform 200ms ease;
+
+		&:hover,
+		&:focus-visible {
+			color: white;
+			border-color: rgb(255 255 255 / 50%);
+		}
+
+		&.is-active {
+			color: var(--color-background-dark);
+			border-color: var(--color-primary);
+			background-color: var(--color-primary);
+		}
+	}
+
+	.__panel:not([hidden]) {
+		animation: scope-panel-in 300ms ease both;
+	}
+
+	.__card {
+		position: relative;
+		isolation: isolate;
+		transition:
+			color 300ms ease,
+			background-color 300ms ease,
+			border-color 300ms ease,
+			transform 300ms ease,
+			box-shadow 300ms ease;
+
+		&:hover,
+		&:focus-visible {
+			border-color: rgb(255 255 255 / 50%);
+			background-color: rgb(255 255 255 / 6%);
+			transform: translateY(-6px);
+			box-shadow: 0 18px 44px rgb(0 0 0 / 24%);
+
+			.__arrow {
+				color: var(--color-background-dark);
+				border-color: var(--color-primary);
+				background-color: var(--color-primary);
+				transform: translate(2px, -2px);
+			}
+
+			.__icon {
+				opacity: 0.75;
+				transform: scale(1.08);
+			}
+		}
+	}
+
+	.__arrow,
+	.__icon {
+		transition:
+			color 300ms ease,
+			border-color 300ms ease,
+			background-color 300ms ease,
+			opacity 300ms ease,
+			transform 300ms ease;
+	}
+
+	.__arrow svg {
+		transform: rotate(-135deg);
+	}
+}
+
+@keyframes scope-panel-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.b-scope {
+
+		.__tab,
+		.__card,
+		.__arrow,
+		.__icon {
+			transition: none;
+		}
+
+		.__panel:not([hidden]) {
+			animation: none;
+		}
+	}
+}

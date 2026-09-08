@@ -25,9 +25,9 @@
 			@endif
 
 			<div class="__content order2">
-				<h2 data-gsap-element="header" class="text-h4 m-header text-primary">{{ $g_content['header'] }}</h2>
+				<h2 data-gsap-element="header" class="text-h3">{{ $g_content['header'] }}</h2>
 
-				<div data-gsap-element="txt" class="__txt">
+				<div data-gsap-element="txt" class="__txt m-header">
 					{!! $g_content['text'] !!}
 				</div>
 

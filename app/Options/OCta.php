@@ -32,6 +32,8 @@ class Octa extends Options
 				'toolbar'      => 'basic',
 				'media_upload' => false,
 			])
+			->addText('phone', ['label' => 'Telefon'])
+			->addText('mail', ['label' => 'E-mail'])
 			->addLink('button1', [
 				'label'         => 'Przycisk #1 (jasny)',
 				'return_format' => 'array',

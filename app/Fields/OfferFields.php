@@ -17,6 +17,11 @@ class OfferFields extends Field
 
 		$offer
 			->setLocation('post_type', '==', 'offer')
+			->addText('whatwedid', [
+				'label'        => 'Co zrobiliśmy',
+				'instructions' => 'Krótki label wyświetlany nad tytułem w sliderze, np. "Projekt graficzny"',
+				'allow_null'   => 1,
+			])
 			->addImage('offer_icon', [
 				'label'         => 'Ikona',
 				'instructions'  => 'Dodaj ikonę (SVG, PNG) wyświetlaną nad tytułem oferty.',

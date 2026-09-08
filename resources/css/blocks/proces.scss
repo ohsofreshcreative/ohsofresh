@@ -1,3 +1,85 @@
 .b-proces {
+  &.order-flip {
+    display: block;
+  }
 
+  .__card {
+    --proces-color: var(--color-brand-yellow);
+
+    height: auto;
+    transition: border-color 0.3s ease;
+
+    &.is-orange {
+      --proces-color: var(--color-brand-orange);
+    }
+
+    &.is-jasmine {
+      --proces-color: var(--color-brand-jasmine);
+    }
+
+    &.is-purple {
+      --proces-color: var(--color-brand-purple);
+    }
+
+    &.is-dark-purple {
+      --proces-color: var(--color-brand-dark-purple);
+    }
+
+    &.is-blue {
+      --proces-color: var(--color-brand-second);
+    }
+
+    &.is-active {
+      border-color: var(--proces-color);
+
+      .__background {
+        opacity: 0.24;
+        transform: scale(1.03);
+      }
+
+      .__panel {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+    }
+  }
+
+  .__background {
+    opacity: 0.4;
+    transform: scale(1);
+    transition: opacity 0.45s ease, transform 0.6s ease;
+  }
+
+  .__background-overlay {
+    background: linear-gradient(180deg, rgb(15 18 25 / 0.38) 0%, rgb(15 18 25 / 0.86) 100%);
+  }
+
+  .__summary {
+    margin-top: 0;
+
+    &:focus-visible {
+      outline: 2px solid var(--proces-color);
+      outline-offset: -4px;
+    }
+  }
+
+  .__number {
+    color: var(--proces-color);
+  }
+
+  .__panel {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease, opacity 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .__card,
+    .__background,
+    .__panel {
+      transition: none;
+    }
+  }
 }

@@ -1,2 +1,22 @@
-.s-cta-bg {
+.b-cta {
+	.__phone,
+	.__mail {
+		gap: 16px;
+	}
+
+	.__phone::before,
+	.__mail::before {
+		display: block;
+		width: 28px;
+		height: 28px;
+		flex: 0 0 28px;
+	}
+
+	.__phone::before {
+		content: url('@images/phone.svg');
+	}
+
+	.__mail::before {
+		content: url('@images/mail.svg');
+	}
 }
