@@ -84,11 +84,26 @@ html {
 html,
 body {
 	overflow-x: clip;
-	background-color: #151923;
+	background-color: var(--brand-body);
 	color: #b5bac7 !important;
-	background: url("/wp-content/uploads/2026/07/oh-bg-scaled.png"),
-		rgb(21, 25, 35) !important;
-	background-size: cover !important;
+}
+
+/*--- POŚWIATY TŁA STRONY ---*/
+body {
+  --page-glow-small: clamp(150px, 18vw, 280px);
+  --page-glow-medium: clamp(220px, 26vw, 420px);
+  --page-glow-large: clamp(300px, 36vw, 580px);
+
+  background-color: var(--brand-body);
+  background-image:
+    radial-gradient(circle var(--page-glow-medium) at 0% var(--page-glow-first, 9%),
+      color-mix(in srgb, var(--brand-purple) 30%, transparent) 0%, transparent 75%),
+    radial-gradient(circle var(--page-glow-small) at 100% var(--page-glow-second, 38%),
+      color-mix(in srgb, var(--brand-purple) 30%, transparent) 0%, transparent 75%),
+    radial-gradient(circle var(--page-glow-large) at 0% var(--page-glow-third, 84%),
+      color-mix(in srgb, var(--brand-purple) 18%, transparent) 0%, transparent 75%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 /*--- !ROOT ---*/
@@ -807,7 +822,7 @@ h6,
 	display: flex;
 	align-items: center;
 	color: #FFF !important;
-	font-size: 15px;
+	font-size: 16px;
 	white-space: nowrap;
 }
 

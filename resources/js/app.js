@@ -15,6 +15,11 @@ import './footer-accordion.js';
 /*--- USED ---*/
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Losowe pozycje trzech poświat względem całej wysokości strony.
+  [['first', 6, 12], ['second', 34, 43], ['third', 78, 90]].forEach(([name, min, max]) => {
+    document.body.style.setProperty(`--page-glow-${name}`, `${min + Math.random() * (max - min)}%`);
+  });
+
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
