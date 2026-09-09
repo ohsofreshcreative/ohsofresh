@@ -60,8 +60,8 @@
 }
 
 ::selection {
-	background: var(--color-primary-400);
-	color: #fff;
+	background: var(--color-primary);
+	color: #151923;
 }
 
 /* 
@@ -84,7 +84,7 @@ html {
 html,
 body {
 	overflow-x: clip;
-	background-color:#151923;
+	background-color: #151923;
 	color: #b5bac7 !important;
 	background: url("/wp-content/uploads/2026/07/oh-bg-scaled.png"),
 		rgb(21, 25, 35) !important;
@@ -372,15 +372,18 @@ body {
 	.text-h5,
 	h6,
 	.text-h6,
+	a,
+	.accordion-label {
+		color: #FFF;
+	}
+
 	p,
 	b,
 	strong,
 	i,
 	ul,
-	ul li,
-	a,
-	.accordion-label {
-		color: #fff;
+	ul li {
+		color: #b5bac7 !important;
 	}
 
 	a:hover {
@@ -802,7 +805,7 @@ h6,
 	display: flex;
 	align-items: center;
 	color: #FFF !important;
-	font-size: 17px;
+	font-size: 15px;
 	white-space: nowrap;
 }
 
@@ -888,7 +891,7 @@ h6,
 	position: relative;
 }
 
-.desktop-menu-parent > .submenu-level-1 {
+.desktop-menu-parent>.submenu-level-1 {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -899,16 +902,14 @@ h6,
 	border-radius: 16px;
 	background:
 
-	linear-gradient(
-		180deg,
-		var(--color-background-dark) 0%,
-		var(--color-background-dark) 32%,
-		rgb(var(--fo-dark) / 0.22) 100%
-	);
+		linear-gradient(180deg,
+			var(--color-background-dark) 0%,
+			var(--color-background-dark) 32%,
+			rgb(var(--fo-dark) / 0.22) 100%);
 	box-shadow: 0 24px 60px rgb(0 0 0 / 0.35);
 }
 
-.desktop-menu-parent > .submenu-level-1 .desktop-submenu-link {
+.desktop-menu-parent>.submenu-level-1 .desktop-submenu-link {
 	display: block;
 	padding: 12px 16px;
 	border-radius: 10px;
@@ -917,7 +918,7 @@ h6,
 	line-height: 1.4;
 }
 
-.desktop-menu-parent > .submenu-level-1 .desktop-submenu-link:hover {
+.desktop-menu-parent>.submenu-level-1 .desktop-submenu-link:hover {
 	background-color: rgb(255 255 255 / 0.07);
 	color: var(--color-primary) !important;
 }
@@ -930,7 +931,7 @@ h6,
 	position: static;
 }
 
-.nav-primary .mega-menu > .submenu-level-1 {
+.nav-primary .mega-menu>.submenu-level-1 {
 	position: fixed;
 	top: var(--menu-height);
 	left: 0;
@@ -951,11 +952,11 @@ h6,
 	box-shadow: 0 28px 70px rgb(0 0 0 / 0.45);
 }
 
-.nav-primary .mega-menu > .submenu-level-1 > li:not(.mega-menu__cta) {
+.nav-primary .mega-menu>.submenu-level-1>li:not(.mega-menu__cta) {
 	min-width: 0;
 }
 
-.nav-primary .mega-menu > .submenu-level-1 > li > .desktop-submenu-link {
+.nav-primary .mega-menu>.submenu-level-1>li>.desktop-submenu-link {
 	padding: 0;
 	border-radius: 0;
 	background: transparent;
@@ -964,7 +965,7 @@ h6,
 	font-weight: 600;
 }
 
-.nav-primary .mega-menu > .submenu-level-1 > li > .desktop-submenu-link:hover {
+.nav-primary .mega-menu>.submenu-level-1>li>.desktop-submenu-link:hover {
 	background: transparent;
 	color: var(--color-primary) !important;
 }
@@ -990,7 +991,7 @@ h6,
 	color: #fff !important;
 }
 
-.nav-primary .mega-menu > .submenu-level-1 > .mega-menu__cta {
+.nav-primary .mega-menu>.submenu-level-1>.mega-menu__cta {
 	position: relative;
 	left: 50%;
 	display: block;
@@ -1323,8 +1324,6 @@ article.post:hover {
 	}
 }
 
-
-
 .single-post article h1 {
 	font-size: 36px !important;
 	padding-top: 30px;
@@ -1356,6 +1355,7 @@ article.post:hover {
 /*--- !CATEGORY ARCHIVE ---*/
 
 .category-archive {
+
 	.__breadcrumbs,
 	.__breadcrumbs p,
 	.__breadcrumbs span {
@@ -1435,6 +1435,7 @@ article.post:hover {
 /*--- !CONCEPTS ARCHIVE ---*/
 
 .concepts-archive {
+
 	.__breadcrumbs,
 	.__breadcrumbs p,
 	.__breadcrumbs span {
@@ -1490,6 +1491,79 @@ article.post:hover {
 }
 
 /*--- !SINGLE - BLOG ---*/
+
+.single-post .__article .osf-faq-item {
+  margin: 0 0 16px;
+  padding: 16px;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: var(--radius-xl, 12px);
+
+  > summary {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding-right: 32px;
+    color: var(--color-white, #fff);
+    font-family: var(--header);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  > summary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    background: linear-gradient(currentColor, currentColor) center / 8px 2px no-repeat;
+    transform: translateY(-50%);
+  }
+
+  > summary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    width: 2px;
+    height: 8px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &[open] > summary::after {
+    opacity: 0;
+  }
+
+  > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  > summary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  > :not(summary) {
+    margin: 16px 16px 0 0;
+    font-size: 14px;
+  }
+
+  > summary + * {
+    margin-top: 12px;
+  }
+
+  &[open] {
+    padding-bottom: 24px;
+  }
+}
 
 .single-post {
 	.single-post-content {
@@ -1563,14 +1637,6 @@ article.post:hover {
 			color: var(--color-primary) !important;
 			opacity: 1;
 			text-decoration: underline !important;
-		}
-
-		.toc-h3 {
-			margin-left: 16px;
-		}
-
-		.toc-h4 {
-			margin-left: 32px;
 		}
 	}
 
@@ -1700,6 +1766,36 @@ article.post:hover {
 	}
 }
 
+.single-post .__article {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		border: 0;
+		margin-bottom:32px;
+	}
+
+	thead,
+	tbody,
+	tfoot,
+	tr {
+		border: 0;
+	}
+
+	thead {
+		border: 0;
+		color: #FFF;
+	}
+
+	th,
+	td {
+		padding: 12px 16px;
+		border: 0;
+		border-bottom: 1px solid rgb(255 255 255 / 0.2);
+		text-align: left;
+		vertical-align: top;
+	}
+}
+
 /*--- !FOOTER ---*/
 
 .footer-py {
@@ -1814,7 +1910,7 @@ footer {
 	.widget-title::after {
 		content: url('/resources/images/bottom-arrow.svg');
 		position: absolute;
-		right: 10px;
+		right: 24px;
 		transition: transform 0.3s;
 		display: block !important;
 		width: 12px;
@@ -1824,11 +1920,10 @@ footer {
 		content: url('/resources/images/bottom-arrow.svg');
 		position: absolute;
 		/*top: 50%;*/
-		right: 10px;
+		right: 24px;
 		transform: scaleY(-1);
 		transition: transform 0.3s;
 		display: block !important;
-		margin-top: -6px;
 	}
 
 	.__widget {

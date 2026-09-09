@@ -23,3 +23,27 @@ $(document).ready(function () {
     c = currentScrollTop;
   });
 });
+/*--- Przełącznik języka GTranslate ---*/
+$(document).ready(function () {
+  const targets = document.querySelectorAll('[data-language-target]');
+  if (!targets.length) return;
+
+  let previousLanguage;
+  const syncLanguage = () => {
+    const cookie = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
+    const language = cookie && /(?:\/|%2f)en$/i.test(cookie[1]) ? 'en' : 'pl';
+    if (language === previousLanguage) return;
+    previousLanguage = language;
+
+    targets.forEach((target) => {
+      target.hidden = target.dataset.languageTarget === language;
+    });
+  };
+
+  // GTranslate zapisuje cookie asynchronicznie, bez przeładowania strony.
+  syncLanguage();
+  window.setInterval(() => {
+    if (!document.hidden) syncLanguage();
+  }, 300);
+  window.addEventListener('pageshow', syncLanguage);
+});

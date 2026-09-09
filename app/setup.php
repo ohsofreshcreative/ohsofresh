@@ -24,6 +24,15 @@ add_filter('block_editor_settings_all', function ($settings) {
 	return $settings;
 });
 
+/*--- Prosta treść wewnątrz iframe TinyMCE ---*/
+
+add_filter('mce_css', function ($styles) {
+	$file = 'resources/css/classic-editor.css';
+	$url = add_query_arg('ver', filemtime(get_theme_file_path($file)), get_theme_file_uri($file));
+
+	return $styles ? $styles . ',' . $url : $url;
+});
+
 /*--- ACF BLOCK EXPANDED EDITOR ---*/
 
 add_filter('acf/register_block_type_args', function ($block) {

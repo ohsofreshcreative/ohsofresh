@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-jobs')) import('./blocks/jobs');
   if (document.querySelector('.b-proces')) import('./blocks/proces');
   if (document.querySelector('.b-scope')) import('./blocks/scope');
+
+  document.querySelectorAll('.single-post .__article').forEach((article, index) => {
+    article.querySelectorAll('details.osf-faq-item').forEach((item) => {
+      item.setAttribute('name', `single-post-faq-${index}`);
+    });
+  });
 });
 
 /*--- NOT USED ---*/

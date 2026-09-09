@@ -17,7 +17,7 @@
 	</figure>
 	@endif
 
-	<div class="__overlay absolute inset-0 z-1 pointer-events-none" aria-hidden="true"></div>
+	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(21, 25, 35, 1) 0%, rgba(21, 25, 35, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.4) 100%);"></div>
 
 	<div class="__wrapper c-main relative z-10 flex items-center">
 		<div class="__content w-full md:w-1/2">

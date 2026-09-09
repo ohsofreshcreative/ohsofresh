@@ -1,2 +1,35 @@
 .b-project {
+
+		ul {
+			margin-top: 8px;
+			margin-bottom: 24px;
+			list-style: none;
+			padding-left: 0;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			li {
+				position: relative;
+				margin-bottom: 0.5em;
+				display: flex;
+				gap: 8px;
+				align-items: start;
+
+				&::before {
+					content: '';
+					display: inline-block;
+					width: 10px;
+					height: 10px;
+					background-image: url('@images/pointer.svg');
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+					flex-shrink: 0;
+					top:8px;
+					position: relative;
+				}
+			}
+		}
 }

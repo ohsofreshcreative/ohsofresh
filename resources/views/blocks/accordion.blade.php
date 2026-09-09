@@ -18,7 +18,7 @@
 					@if (!empty($g_accordion['image']))
 					<figure data-gsap-element="img" class="__img order1 h-full mt-8">
 						<picture>
-							<img class="object-cover img-md w-full radius-img" src="{{ $g_accordion['image']['url'] }}" alt="{{ $g_accordion['image']['alt'] ?? '' }}">
+							<img class="object-cover img-l w-full radius-img" src="{{ $g_accordion['image']['url'] }}" alt="{{ $g_accordion['image']['alt'] ?? '' }}">
 						</picture>
 					</figure>
 					@endif

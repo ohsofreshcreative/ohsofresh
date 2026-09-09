@@ -7,6 +7,7 @@
  * i przyciski renderują się bez stylów.
  */
 @import './app.css';
+@import './classic-editor.css';
 
 /*--- Poprawki wyłącznie dla edytora ---*/
 

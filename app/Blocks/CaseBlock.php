@@ -43,6 +43,24 @@ class CaseBlock extends Block
 				'toolbar' => 'full',
 				'media_upload' => true,
 			])
+			->addText('header1', [
+				'label' => 'Nagłówek',
+			])
+			->addWysiwyg('text1', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
+			->addText('header2', [
+				'label' => 'Nagłówek',
+			])
+			->addWysiwyg('text2', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
 			->addSelect('color', [
 				'label' => 'Kolor nagłówka',
 				'choices' => [

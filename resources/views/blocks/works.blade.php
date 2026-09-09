@@ -29,7 +29,7 @@
 					@if (!empty($item['categories']))
 					<div class="__categories absolute inset-x-0 top-0 z-10 flex flex-wrap gap-2 p-6 md:p-8">
 						@foreach ($item['categories'] as $category)
-						<span class="inline-flex items-center rounded-full border border-white bg-transparent px-3 py-1 text-xs font-medium leading-none text-white">
+						<span class="inline-flex items-center rounded-full border border-white bg-black/40 px-3 py-1 text-xs font-medium leading-none text-white">
 							{{ $category }}
 						</span>
 						@endforeach
@@ -37,7 +37,7 @@
 					@endif
 
 					<div class="__content absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-6 p-6 md:p-8 text-white">
-						<h2 class="__title text-h4">{!! $item['title'] !!}</h2>
+						<h2 class="__title text-h5">{!! $item['title'] !!}</h2>
 						<span class="grid size-14 shrink-0 place-items-center rounded-full border border-white" aria-hidden="true">
 							<x-icon.arrow-up class="h-4 w-4 rotate-[225deg] group-hover:rotate-[270deg] transition-transform text-white" />
 						</span>

@@ -32,7 +32,7 @@ class Works extends Block
 			->addGroup('g_works', ['label' => ''])
 			->addMessage(
 				'Informacja',
-				'Blok automatycznie wyświetla opublikowane wpisy z sekcji „Realizacje”. Kolejność wynika z daty publikacji.'
+				'Blok automatycznie wyświetla opublikowane wpisy z sekcji „Realizacje”. Kolejność ustawisz przez przeciąganie w Realizacje → Kolejność. Po zmianach kliknij „Zapisz kolejność”.'
 			)
 			->endGroup()
 
@@ -88,8 +88,7 @@ class Works extends Block
 			'posts_per_page' => (int) get_option('posts_per_page'),
 			'paged' => $paged,
 			'post_status' => 'publish',
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC', 'ID' => 'DESC'],
 		]);
 
 		$items = [];

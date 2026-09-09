@@ -1569,6 +1569,11 @@
           "color": "var(--bg-dark)"
         },
         {
+          "name": "Brand (Body)",
+          "slug": "brand-body",
+          "color": "var(--brand-body)"
+        },
+        {
           "name": "Brand (Second)",
           "slug": "brand-second",
           "color": "var(--brand-second)"

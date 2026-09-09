@@ -8,7 +8,7 @@
   $used_ids = [];
 
   $content = preg_replace_callback(
-    '/<h([2-4])([^>]*)>(.*?)<\/h\1>/is',
+    '/<h([23])([^>]*)>(.*?)<\/h\1>/is',
     function ($heading) use (&$toc_items, &$used_ids) {
       $level = (int) $heading[1];
       $attributes = $heading[2];
@@ -79,7 +79,7 @@
 <article class="single-post-content">
   <header data-gsap-anim="section" class="__hero relative -menu-pt">
     <div class="c-main py-20 md:py-26">
-      <div class="w-full lg:w-3/5 mx-auto">
+      <div class="w-full lg:w-3/5">
         <nav data-gsap-element="bread" class="__breadcrumbs mb-8" aria-label="Okruszki">
           @if (function_exists('yoast_breadcrumb'))
             {!! yoast_breadcrumb('', '', false) !!}
@@ -117,7 +117,7 @@
     <div class="w-full lg:w-3/5 mx-auto">
       @if (!empty($toc_items))
         <nav class="toc" aria-label="Spis treści">
-          <p class="text-h6 text-white mb-4">Spis treści</p>
+          <p class="text-h6 text-white block pb-4">Spis treści</p>
           <ol>
             {!! implode('', $toc_items) !!}
           </ol>
@@ -200,7 +200,7 @@
 
       if (!article) return;
 
-      const headings = article.querySelectorAll('.__entry h2[id], .__entry h3[id], .__entry h4[id]');
+      const headings = article.querySelectorAll('.__entry h2[id], .__entry h3[id]');
       const links = article.querySelectorAll('.toc a');
 
       const updateActiveLink = () => {

@@ -35,11 +35,11 @@ class Slider extends Block
                 'return_format' => 'array',
             ])
             ->addRelationship('slider_offers', [
-                'label'         => 'Wpisy oferty (kolejność ma znaczenie)',
+                'label'         => 'Realizacje w sliderze',
                 'post_type'     => ['works'],
                 'filters'       => ['search'],
                 'return_format' => 'object',
-                'instructions'  => 'Wybierz i ułóż wpisy oferty w dowolnej kolejności. Jeśli pole jest puste, wyświetlą się wszystkie automatycznie.',
+                'instructions'  => 'Wybierz realizacje do wyświetlenia. Jeśli pole jest puste, wyświetlą się automatycznie realizacje nadrzędne. Kolejność jest zgodna z ustawieniem w Realizacje → Kolejność, tak jak w bloku Works.',
             ])
 
             ->addTab('Ustawienia bloku', ['placement' => 'top'])
@@ -75,18 +75,21 @@ class Slider extends Block
     {
         $selected = get_field('slider_offers') ?: [];
 
+        $query_args = [
+            'post_type'      => 'works',
+            'posts_per_page' => -1,
+            'orderby'       => ['menu_order' => 'ASC', 'date' => 'DESC', 'ID' => 'DESC'],
+            'post_status'   => 'publish',
+        ];
+
         if (empty($selected)) {
-            $offers_query = new \WP_Query([
-                'post_type'      => 'works',
-                'post_parent'    => 0,
-                'posts_per_page' => -1,
-                'orderby'        => 'menu_order',
-                'order'          => 'ASC',
-                'post_status'    => 'publish',
-            ]);
-            $selected = $offers_query->posts;
-            wp_reset_postdata();
+            $query_args['post_parent'] = 0;
+        } else {
+            $query_args['post__in'] = wp_list_pluck($selected, 'ID');
         }
+
+        $offers_query = new \WP_Query($query_args);
+        $selected = $offers_query->posts;
 
         $slides = [];
         foreach ($selected as $post) {

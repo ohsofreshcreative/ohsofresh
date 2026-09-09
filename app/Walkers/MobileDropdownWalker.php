@@ -16,7 +16,6 @@ class MobileDropdownWalker extends Walker_Nav_Menu
         // Dodajemy link do strony nadrzędnej jako pierwszy element podmenu
         if ($depth === 0 && isset($this->current_item_url)) {
             $output .= "\n<ul x-show=\"open\" x-transition class=\"pl-4 mt-2 space-y-2\" style=\"display: none;\">\n";
-            $output .= '<li><a href="' . esc_attr($this->current_item_url) . '" class="block py-1 font-semibold">Zobacz wszystko</a></li>';
             unset($this->current_item_url); // Czyścimy właściwość po użyciu
         } else {
             // Submenu jest domyślnie ukryte i pojawia się z animacją.

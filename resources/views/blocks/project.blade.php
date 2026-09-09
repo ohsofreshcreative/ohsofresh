@@ -51,7 +51,7 @@
 
       @if (!empty($g_project['challenges']))
         <div data-gsap-element="txt" class="__challenges mt-8 border-t border-primary pt-8">
-          <h4>Wyzwania</h4>
+          <h4>Kluczowe założenia</h4>
           <div class="__txt m-header space-y-4">
             {!! $g_project['challenges'] !!}
           </div>
@@ -59,7 +59,7 @@
       @endif
 
       @if (!empty($r_project))
-        <div class="__results mt-8 border-t border-primary pt-8">
+        <div class="__results mt-8 border-t border-primary pt-8 hidden">
           <h4 data-gsap-element="header">Rezultat</h4>
 
           <div class="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-2">

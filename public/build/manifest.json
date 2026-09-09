@@ -15,7 +15,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-if_h-H2S.css",
+    "file": "assets/app-B12rWQ9e.css",
     "name": "app",
     "names": [
       "app.css"
@@ -23,7 +23,7 @@
     "src": "resources/css/app.css",
     "isEntry": true,
     "assets": [
-      "assets/bottom-arrow-BE5KB43S.svg",
+      "assets/bottom-arrow-35nk7Lsq.svg",
       "assets/pointer-CXQmkUt6.svg",
       "assets/phone-eJUo9g60.svg",
       "assets/mail-mDkEzfwI.svg",
@@ -31,7 +31,7 @@
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-DxRHHWwo.css",
+    "file": "assets/editor-CTI2R5vj.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -39,7 +39,7 @@
     "src": "resources/css/editor.css",
     "isEntry": true,
     "assets": [
-      "assets/bottom-arrow-BE5KB43S.svg",
+      "assets/bottom-arrow-35nk7Lsq.svg",
       "assets/pointer-CXQmkUt6.svg",
       "assets/phone-eJUo9g60.svg",
       "assets/mail-mDkEzfwI.svg",
@@ -51,7 +51,7 @@
     "src": "resources/images/address.svg"
   },
   "resources/images/bottom-arrow.svg": {
-    "file": "assets/bottom-arrow-BE5KB43S.svg",
+    "file": "assets/bottom-arrow-35nk7Lsq.svg",
     "src": "resources/images/bottom-arrow.svg"
   },
   "resources/images/mail.svg": {
@@ -67,7 +67,7 @@
     "src": "resources/images/pointer.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-IcXPAYIm.js",
+    "file": "assets/app-BmHDYdEe.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -94,7 +94,7 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/proces.js": {
-    "file": "assets/proces-C-s5xfI2.js",
+    "file": "assets/proces-5IQjrjYh.js",
     "name": "proces",
     "src": "resources/js/blocks/proces.js",
     "isDynamicEntry": true

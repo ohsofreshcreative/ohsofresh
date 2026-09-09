@@ -1,12 +1,13 @@
 document.querySelectorAll('.b-proces').forEach((section) => {
-  const cardsContainer = section.querySelector('.__cards');
   const cards = Array.from(section.querySelectorAll('[data-process-card]'));
 
-  if (!cardsContainer || !cards.length || section.dataset.procesReady === 'true') return;
+  if (!cards.length || section.dataset.procesReady === 'true') return;
 
   section.dataset.procesReady = 'true';
+  let activeIndex = -1;
 
   const activate = (activeCard) => {
+    activeIndex = cards.indexOf(activeCard);
     cards.forEach((card) => {
       const isActive = card === activeCard;
       const trigger = card.querySelector('[data-process-trigger]');
@@ -21,7 +22,7 @@ document.querySelectorAll('.b-proces').forEach((section) => {
 
       if (isActive) {
         panel.removeAttribute('inert');
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
+        panel.style.maxHeight = `${panel.firstElementChild.getBoundingClientRect().height}px`;
       } else {
         panel.setAttribute('inert', '');
         panel.style.maxHeight = '0px';
@@ -29,35 +30,29 @@ document.querySelectorAll('.b-proces').forEach((section) => {
     });
   };
 
-  const activateNearestCard = () => {
-    const containerRect = cardsContainer.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+  const activateOnScroll = () => {
+    const activationLine = window.innerHeight * 0.72;
+    let expandedHeight = 0;
+    let nextIndex = activeIndex;
 
-    if (containerRect.top > viewportHeight * 0.85 || containerRect.bottom < viewportHeight * 0.15) {
-      return;
-    }
-
-    const activationLine = viewportHeight * 0.72;
-    let activeCard = cards[0];
-
-    cards.forEach((card) => {
-      const trigger = card.querySelector('[data-process-trigger]');
-      const triggerTop = trigger?.getBoundingClientRect().top ?? card.getBoundingClientRect().top;
-
-      if (triggerTop <= activationLine) activeCard = card;
+    // Odejmujemy wysokość paneli, żeby animacja nie przesuwała progów przełączania.
+    cards.forEach((card, index) => {
+      const top = card.getBoundingClientRect().top - expandedHeight;
+      if (top <= activationLine - 32 && index > nextIndex) nextIndex = index;
+      if (top > activationLine + 32 && index <= nextIndex) nextIndex = index - 1;
+      expandedHeight += card.querySelector('[data-process-panel]')?.getBoundingClientRect().height || 0;
     });
 
-    activate(activeCard);
+    nextIndex = Math.max(0, nextIndex);
+    if (nextIndex !== activeIndex) activate(cards[nextIndex]);
   };
 
   let frameRequested = false;
-
   const requestScrollUpdate = () => {
     if (frameRequested) return;
-
     frameRequested = true;
     window.requestAnimationFrame(() => {
-      activateNearestCard();
+      activateOnScroll();
       frameRequested = false;
     });
   };
@@ -66,13 +61,11 @@ document.querySelectorAll('.b-proces').forEach((section) => {
     const trigger = card.querySelector('[data-process-trigger]');
 
     trigger?.addEventListener('click', () => activate(card));
-    trigger?.addEventListener('focus', () => activate(card));
   });
 
   window.addEventListener('scroll', requestScrollUpdate, { passive: true });
   window.addEventListener('resize', () => {
     activate(cards.find((card) => card.classList.contains('is-active')) || cards[0]);
-    requestScrollUpdate();
   });
 
   activate(cards[0]);

@@ -27,7 +27,7 @@
     @endif
 
     @if (!empty($r_proces))
-      <div class="__cards order2 flex flex-col gap-10">
+      <div class="__cards order2 flex flex-col gap-10 [overflow-anchor:none]">
         @foreach ($r_proces as $item)
           <article
             data-process-card
@@ -52,7 +52,7 @@
             <button
               type="button"
               data-process-trigger
-              class="__summary relative z-10 flex min-h-40 w-full cursor-pointer flex-col items-start justify-between gap-6 bg-transparent p-4 text-left text-white md:p-5"
+              class="__summary relative z-10 flex min-h-65 w-full cursor-pointer flex-col items-start justify-between gap-6 bg-transparent p-4 text-left text-white md:p-5"
               aria-expanded="{{ $loop->first ? 'true' : 'false' }}">
               <span class="__number text-h6 font-header" aria-hidden="true">{{ $loop->iteration }}</span>
               <span class="text-lg font-semibold leading-tight font-header">{{ $item['header'] ?? 'Krok ' . $loop->iteration }}</span>
@@ -65,7 +65,7 @@
               @if (!$loop->first) inert @endif>
               <div class="__panel-inside min-h-0 overflow-hidden">
                 @if (!empty($item['text']))
-                  <div class="__txt space-y-2 px-4 pb-5 text-sm md:px-5 md:pb-6">
+                  <div class="__txt space-y-2 px-4 pb-8 text-sm md:px-5 md:pb-10">
                     {!! $item['text'] !!}
                   </div>
                 @endif

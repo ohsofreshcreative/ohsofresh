@@ -25,7 +25,7 @@
     @if (!empty($tabs))
       @php($scope_uid = wp_unique_id('scope-'))
 
-      <div class="js-scope m-header">
+      <div data-gsap-element="scope" class="js-scope m-header">
         <div class="__nav-scroll overflow-x-auto">
           <div
             class="__nav flex min-w-max items-center justify-center gap-3 mt-10"
