@@ -9,7 +9,7 @@
 	$background => filled($background) && $background !== 'none',
 	])>
 
-	<div class="__wrapper relative overflow-hidden">
+	<div class="__wrapper relative overflow-hidden py-20 md:py-52">
 
 		@if (!empty($g_octa['image']['url']))
 		<figure class="absolute inset-0 m-0 z-0">
@@ -19,8 +19,10 @@
 		</figure>
 		@endif
 
+		<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(16, 19, 27, 1) 0%, rgba(16, 19, 27, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.6) 100%);"></div>
+
 		<div class="__inside c-main grid grid-cols-1 md:grid-cols-2 items-center gap-6 relative z-20">
-			<div class="__content w-full py-52 w-full md:w-2/3">
+			<div class="__content w-full md:w-2/3">
 				@if (!empty($g_octa['header']))
 				<p data-gsap-element="header" class="block text-h3 text-white !m-header">{{ $g_octa['header'] }}</p>
 				@endif
@@ -31,10 +33,10 @@
 				@if (!empty($g_octa['phone']) || !empty($g_octa['mail']))
 				<div data-gsap-element="data" class="__contact contact-info m-btn grid gap-3">
 					@if (!empty($g_octa['phone']))
-					<a class="__phone flex items-center w-max" href="tel:{{ $g_octa['phone'] }}">{{ $g_octa['phone'] }}</a>
+					<a class="__phone flex items-center w-max !text-xl" href="tel:{{ $g_octa['phone'] }}">{{ $g_octa['phone'] }}</a>
 					@endif
 					@if (!empty($g_octa['mail']))
-					<a class="__mail flex items-center w-max" href="mailto:{{ $g_octa['mail'] }}">{{ $g_octa['mail'] }}</a>
+					<a class="__mail flex items-center w-max !text-xl" href="mailto:{{ $g_octa['mail'] }}">{{ $g_octa['mail'] }}</a>
 					@endif
 				</div>
 				@endif

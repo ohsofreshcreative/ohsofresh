@@ -55,9 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- TWOJE ISTNIEJĄCE ANIMACJE GSAP (TERAZ POWINNY DZIAŁAĆ) ---
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
-    const standardImages = section.querySelectorAll(
+    const standardImages = Array.from(section.querySelectorAll(
       "[data-gsap-element='img']"
-    );
+    )).filter((element) => element.closest("[data-gsap-anim='section']") === section);
     standardImages.forEach((img) => {
       gsap.from(img, {
         opacity: 0,
@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    const otherElements = section.querySelectorAll(
+    const otherElements = Array.from(section.querySelectorAll(
       "[data-gsap-element]:not([data-gsap-element*='img']):not([data-gsap-element='stagger'])"
-    );
+    )).filter((element) => element.closest("[data-gsap-anim='section']") === section);
     otherElements.forEach((element, index) => {
       gsap.from(element, {
         opacity: 0,
@@ -94,9 +94,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    const staggerElements = section.querySelectorAll(
+    const staggerElements = Array.from(section.querySelectorAll(
       "[data-gsap-element='stagger']"
-    );
+    )).filter((element) => element.closest("[data-gsap-anim='section']") === section);
     if (staggerElements.length > 0) {
       const sorted = [...staggerElements].sort((a, b) => {
         const getDelay = (el) => {

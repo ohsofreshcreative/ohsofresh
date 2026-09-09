@@ -48,30 +48,30 @@
               $post_category = !empty($post_categories) ? $post_categories[0] : null;
             @endphp
 
-            <article @php(post_class('__card group')) data-gsap-element="card">
-              <a href="{{ get_permalink() }}" class="block">
-                @if (has_post_thumbnail())
-                  <figure class="__img img-m radius overflow-hidden m-0">
-                    {!! get_the_post_thumbnail(null, 'large', [
-                      'class' => 'w-full h-full object-cover',
-                      'loading' => 'lazy',
-                    ]) !!}
-                  </figure>
-                @endif
-
-                <div class="__content pt-5">
-                  @if ($post_category)
-                    <span class="block text-primary text-sm font-semibold mb-2">
-                      {{ $post_category->name }}
-                    </span>
-                  @endif
-
-                  <h2 class="text-h7 text-white transition-colors group-hover:text-primary">
-                    {{ get_the_title() }}
-                  </h2>
-                </div>
-              </a>
-            </article>
+            <div data-gsap-element="stager">
+				<article @php(post_class('__card group'))>
+				  <a href="{{ get_permalink() }}" class="block">
+					@if (has_post_thumbnail())
+					  <figure class="__img img-m radius overflow-hidden m-0">
+						{!! get_the_post_thumbnail(null, 'large', [
+						  'class' => 'w-full h-full object-cover',
+						  'loading' => 'lazy',
+						]) !!}
+					  </figure>
+					@endif
+					<div class="__content pt-5">
+					  @if ($post_category)
+						<span class="block text-primary text-sm font-semibold mb-2">
+						  {{ $post_category->name }}
+						</span>
+					  @endif
+					  <h2 class="text-h7 text-white transition-colors group-hover:text-primary">
+						{{ get_the_title() }}
+					  </h2>
+					</div>
+				  </a>
+				</article>
+			</div>
           @endwhile
         </div>
 

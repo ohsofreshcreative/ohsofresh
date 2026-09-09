@@ -104,28 +104,32 @@
   </header>
 
   @if (has_post_thumbnail())
-    <figure data-gsap-element="img" class="__featured img-2xl w-full overflow-hidden m-0">
-      {!! get_the_post_thumbnail($current_id, 'full', [
-        'class' => 'w-full h-full object-cover',
-        'loading' => 'eager',
-        'fetchpriority' => 'high',
-      ]) !!}
-    </figure>
+    <div data-gsap-anim="section">
+      <figure data-gsap-element="img" class="__featured img-2xl w-full overflow-hidden m-0">
+        {!! get_the_post_thumbnail($current_id, 'full', [
+          'class' => 'w-full h-full object-cover',
+          'loading' => 'eager',
+          'fetchpriority' => 'high',
+        ]) !!}
+      </figure>
+    </div>
   @endif
 
   <section id="tresc" class="__article c-main -spt -spb">
     <div class="w-full lg:w-3/5 mx-auto">
       @if (!empty($toc_items))
-        <nav class="toc" aria-label="Spis treści">
-          <p class="text-h6 text-white block pb-4">Spis treści</p>
-          <ol>
+        <nav data-gsap-anim="section" class="toc" aria-label="Spis treści">
+          <p data-gsap-element="header" class="text-h6 text-white block pb-4">Spis treści</p>
+          <ol data-gsap-element="txt">
             {!! implode('', $toc_items) !!}
           </ol>
         </nav>
       @endif
 
-      <div class="__entry">
-        {!! $content !!}
+      <div data-gsap-anim="section">
+        <div data-gsap-element="txt" class="__entry">
+          {!! $content !!}
+        </div>
       </div>
     </div>
   </section>
@@ -170,7 +174,7 @@
     </div>
 
     @if ($category)
-      <p class="__more text-center mt-16 p-6">
+      <p data-gsap-element="txt" class="__more text-center mt-16 p-6">
         Chcesz zobaczyć więcej?
         <a href="{{ get_category_link($category->term_id) }}">
           Sprawdź wszystkie wpisy z kategorii {{ $category->name }}

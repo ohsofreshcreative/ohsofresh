@@ -251,6 +251,7 @@
 @import '../css/blocks/project.scss';
 @import '../css/blocks/case.scss';
 @import '../css/blocks/reach.scss';
+@import '../css/blocks/connect.scss';
 /*-- NOT USED ---*/
 @import '../css/blocks/about.scss';
 @import '../css/blocks/content.scss';

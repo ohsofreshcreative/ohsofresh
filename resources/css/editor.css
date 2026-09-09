@@ -7,7 +7,6 @@
  * i przyciski renderują się bez stylów.
  */
 @import './app.css';
-@import './classic-editor.css';
 
 /*--- Poprawki wyłącznie dla edytora ---*/
 
@@ -264,3 +263,63 @@
 	background-color: #fff !important;
 }
 
+
+/*--- Prosta treść edytora klasycznego i TinyMCE ---*/
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) {
+  color: #000 !important;
+  background: #fff !important;
+  font: 16px/1.5 Arial, sans-serif !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) :is(p, h1, h2, h3, h4, h5, h6, ul, ol, li, a, strong, b, em, i, span, blockquote) {
+  color: #000 !important;
+  font-family: Arial, sans-serif !important;
+  text-shadow: none !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) :is(p, ul, ol, li, blockquote) {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) :is(h1, h2, h3, h4, h5, h6) {
+  font-size: revert !important;
+  font-weight: bold !important;
+  line-height: 1.3 !important;
+  margin: 1em 0 0.5em !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) p {
+  margin: 0 0 1em !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) :is(ul, ol) {
+  margin: 1em 0 !important;
+  padding-left: 2em !important;
+  list-style: revert !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) li {
+  display: list-item !important;
+  list-style: inherit !important;
+  padding: 0 !important;
+  margin: 0.25em 0 !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) li::before {
+  content: none !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) :is(strong, b) {
+  font-weight: bold !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) :is(em, i) {
+  font-style: italic !important;
+}
+
+:is(.editor-styles-wrapper .wp-block-freeform, body#tinymce) a {
+  text-decoration: underline !important;
+}
