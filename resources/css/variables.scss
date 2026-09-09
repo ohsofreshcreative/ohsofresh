@@ -616,12 +616,14 @@ h6,
 
 .b-shadow {
 	box-shadow: 0 25px 35px rgb(5 11 25 / .35);
-	transition: box-shadow 0.5s ease !important;
+	transform: translateY(0);
+	transition:
+		box-shadow 0.5s ease,
+		transform 0.5s ease !important;
 }
 
 .b-shadow:hover {
 	box-shadow: 0 5px 10px rgb(5 11 25 / .55);
-	transition: box-shadow 0.5s ease !important;
 	transform: translateY(3px);
 }
 
