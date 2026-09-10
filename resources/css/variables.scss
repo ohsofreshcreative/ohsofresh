@@ -660,6 +660,8 @@ h6,
 	white-space: nowrap;
 	cursor: pointer;
 	transition: all 0.2s ease-out;
+	color:#FFF !important;
+	text-decoration: none !important;
 }
 
 .btn-primary, .osf-ai-cta.wp-block-media-text .wp-block-button__link {
@@ -687,7 +689,7 @@ h6,
 	position: relative;
 }
 
-.btn-primary:hover, .osf-ai-cta.wp-block-media-text .wp-block-button__link {
+.btn-primary:hover, .osf-ai-cta.wp-block-media-text .wp-block-button__link:hover {
 	background-position: right center;
 	moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
