@@ -10,10 +10,10 @@
     ])>
 
     @if (!empty($g_hero['video']) || !empty($g_hero['image']))
-    <div class="absolute inset-0 overflow-hidden z-0" id="heroVideoWrapper">
+    <div class="absolute inset-x-0 top-0 h-[40svh] sm:h-full overflow-hidden z-0" id="heroVideoWrapper">
 
         @if (!empty($g_hero['video']))
-        <video class="absolute inset-0 w-full h-full object-cover object-[center_40%] sm:object-center" id="myVideo" autoplay loop muted playsinline>
+        <video class="absolute inset-0 w-full h-full object-cover" id="myVideo" autoplay loop muted playsinline>
             <source src="{{ $g_hero['video'] }}" type="video/mp4">
         </video>
         @endif
@@ -22,7 +22,7 @@
         <img
             src="{{ $g_hero['image']['url'] }}"
             alt="{{ $g_hero['image']['alt'] }}"
-            class="video-fallback absolute inset-0 w-full h-full object-cover object-[center_40%] sm:object-center transition-[opacity,visibility] duration-300 ease-in-out" />
+            class="video-fallback absolute inset-0 w-full h-full object-cover transition-[opacity,visibility] duration-300 ease-in-out" />
         @endif
 
     </div>

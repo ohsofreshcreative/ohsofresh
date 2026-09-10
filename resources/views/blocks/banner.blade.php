@@ -10,15 +10,15 @@
 	])>
 
 	@if (!empty($g_banner['image']))
-	<figure class="absolute inset-0 w-full h-full z-0 m-0">
+	<figure class="absolute inset-x-0 top-0 w-full h-[40svh] sm:h-full z-0 m-0">
 		<picture class="w-full h-full">
-			<img src="{{ $g_banner['image']['url'] }}" alt="{{ $g_banner['image']['alt'] }}" class="w-full h-full object-cover object-[center_40%] sm:object-center" />
+			<img src="{{ $g_banner['image']['url'] }}" alt="{{ $g_banner['image']['alt'] }}" class="w-full h-full object-cover" />
 		</picture>
 	</figure>
 	@endif
 
 	@if (!empty($g_banner['video']) || !empty($g_banner['image']))
-	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(21, 25, 35, 1) 0%, rgba(21, 25, 35, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.4) 100%);"></div>
+	<div class="absolute inset-x-0 top-0 h-[40svh] sm:h-full z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(21, 25, 35, 1) 0%, rgba(21, 25, 35, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.4) 100%);"></div>
 	@endif
 
 <!-- 	@if (!empty($g_banner['video']) || !empty($g_banner['image']))
