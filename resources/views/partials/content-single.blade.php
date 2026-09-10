@@ -105,7 +105,7 @@
 
   @if (has_post_thumbnail())
     <div data-gsap-anim="section">
-      <figure data-gsap-element="img" class="__featured img-2xl w-full overflow-hidden m-0">
+      <figure data-gsap-element="img" class="__featured img-4xl w-full overflow-hidden m-0">
         {!! get_the_post_thumbnail($current_id, 'full', [
           'class' => 'w-full h-full object-cover',
           'loading' => 'eager',
