@@ -11,6 +11,7 @@ import.meta.glob(['../images/**', '../fonts/**']);
 // Twoje niestandardowe moduły JS
 import './menubar.js';
 import './footer-accordion.js';
+import initSmoothScroll from './smooth-scroll';
 
 /*--- USED ---*/
 
@@ -57,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
     );
     return;
   }
+
+  initSmoothScroll();
 
   // --- TWOJE ISTNIEJĄCE ANIMACJE GSAP (TERAZ POWINNY DZIAŁAĆ) ---
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
