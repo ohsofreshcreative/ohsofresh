@@ -9,7 +9,7 @@
 			<h1 data-gsap-element="404" class=" !text-9xl text-s-lighter">404</h1>
 			<h2 data-gsap-element="title" class="text-white"> Podana strona nie istnieje</h2>
 			<p data-gsap-element="txt"> Niestety strona, którą chcesz odwiedzić nie istnieje. Prawdopodobnie została przeniesiona lub źle wpisałeś adres. Przejdź do strony głównej.</p>
-			<a data-gsap-element="btn" class="primary-btn main-btn m-btn" href="/">Strona główna</a>
+			<a data-gsap-element="btn" class="btn-primary btn main-btn m-btn" href="/">Strona główna</a>
 		</div>
 		</div>
 
