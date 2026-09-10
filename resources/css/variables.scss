@@ -1817,6 +1817,7 @@ article.post:hover {
 }
 
 .osf-ai-cta.wp-block-media-text {
+	display:grid;
 	margin-top:40px;
 	gap:56px;
 	border: 1px dotted #666;
@@ -1838,6 +1839,12 @@ article.post:hover {
 	}
 	.wp-block-button__link  {
 		
+	}
+}
+
+@media (max-width: 768px) {
+	.osf-ai-cta.wp-block-media-text {
+		grid-template-columns: 1fr;
 	}
 }
 
