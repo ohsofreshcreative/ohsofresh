@@ -12,7 +12,7 @@
 	@if (!empty($g_banner['image']))
 	<figure class="absolute inset-0 w-full h-full z-0 m-0">
 		<picture class="w-full h-full">
-			<img src="{{ $g_banner['image']['url'] }}" alt="{{ $g_banner['image']['alt'] }}" class="w-full h-full object-cover" />
+			<img src="{{ $g_banner['image']['url'] }}" alt="{{ $g_banner['image']['alt'] }}" class="w-full h-full object-cover object-[center_40%] sm:object-center" />
 		</picture>
 	</figure>
 	@endif
