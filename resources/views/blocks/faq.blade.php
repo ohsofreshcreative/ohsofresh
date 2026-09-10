@@ -9,7 +9,7 @@
 	$background => filled($background) && $background !== 'none',
 	])>
 
-	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-20">
+	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20">
 
 		<div class="__content">
 			<h3 data-gsap-element="header" class="">{{ $g_faq['header'] }}</h3>

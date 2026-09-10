@@ -30,7 +30,7 @@
 
 
     <div class=" __wrapper c-main relative z-10">
-        <div class="__content relative flex flex-col justify-center w-full md:w-10/12 lg:w-6/12 z-20 pt-48 pb-62">
+        <div class="__content relative flex flex-col justify-center w-full md:w-10/12 lg:w-6/12 z-20 pt-28 sm:pt-48 pb-48 sm:pb-62">
             <p data-gsap-element="header" class="text-white">
                 {{ $g_hero['title'] }}
             </p>
