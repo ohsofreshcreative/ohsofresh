@@ -33,7 +33,7 @@
 			<div class="swiper-wrapper">
 				@foreach ($slides as $slide)
 				<div class="swiper-slide">
-					<article class="__card">
+					<article class="__card min-h-[400px] sm:min-h-auto">
 						<a href="{{ $slide['url'] }}" class="__link group relative block overflow-hidden aspect-[6/5] radius">
 							@if (!empty($slide['image_url']))
 							<figure class="__img absolute inset-0 m-0">
