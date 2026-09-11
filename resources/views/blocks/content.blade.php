@@ -19,7 +19,7 @@
 			@if (!empty($g_content['image']))
 			<figure data-gsap-element="img" class="__img h-full order1">
 				<picture>
-					<img class="radius-img h-[504px] max-h-[504px] w-full object-cover" src="{{ $g_content['image']['url'] }}" alt="{{ $g_content['image']['alt'] ?? '' }}">
+					<img class="radius-img h-52 md:h-[504px] max-h-[504px] w-full object-cover" src="{{ $g_content['image']['url'] }}" alt="{{ $g_content['image']['alt'] ?? '' }}">
 				</picture>
 			</figure>
 			@endif
