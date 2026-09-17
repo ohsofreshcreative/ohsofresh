@@ -15,7 +15,7 @@
 			@if (!empty($g_action['image']))
 			<figure data-gsap-element="img" class="__img order1 !m-0">
 				<picture>
-					<img class="radius-img w-full aspect-square object-cover" src="{{ $g_action['image']['url'] }}" alt="{{ $g_action['image']['alt'] ?? '' }}">
+					<img class="radius w-full aspect-square object-cover" src="{{ $g_action['image']['url'] }}" alt="{{ $g_action['image']['alt'] ?? '' }}">
 				</picture>
 			</figure>
 			@endif
