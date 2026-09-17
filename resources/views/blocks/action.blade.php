@@ -32,7 +32,7 @@
 					<x-button
 						:href="$g_action['button1']['url']"
 						variant="primary"
-						class=""
+						class="!no-underline"
 						data-gsap-element="btn">
 						{{ $g_action['button1']['title'] }}
 					</x-button>
