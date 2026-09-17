@@ -49,7 +49,7 @@
 							@if (!empty($slide['categories']))
 							<div class="__categories absolute inset-x-0 top-0 z-10 flex flex-wrap gap-2 p-6 md:p-8">
 								@foreach ($slide['categories'] as $category)
-								<span class="inline-flex items-center rounded-full border border-white bg-black/40 px-3 py-1 text-xs font-medium leading-none text-white">
+								<span class="block min-w-0 max-w-full whitespace-normal break-words rounded-full border border-white bg-black/40 px-3 py-1 text-xs font-medium leading-tight text-white">
 									{{ $category }}
 								</span>
 								@endforeach
