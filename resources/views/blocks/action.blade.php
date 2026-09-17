@@ -21,7 +21,7 @@
 			@endif
 
 			<div class="__content order2">
-				<p data-gsap-element="header" class="text-h4 text-white !leading-1">{{ $g_action['header'] }}</p>
+				<p data-gsap-element="header" class="__header text-h4 text-white">{{ $g_action['header'] }}</p>
 
 				<div data-gsap-element="txt" class="__txt text-white">
 					{!! $g_action['text'] !!}
