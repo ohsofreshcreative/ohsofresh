@@ -39,7 +39,11 @@
 							<figure class="__img absolute inset-0 m-0">
 								<img
 									src="{{ $slide['image_url'] }}"
+									@if (!empty($slide['image_width'])) width="{{ $slide['image_width'] }}" @endif
+									@if (!empty($slide['image_height'])) height="{{ $slide['image_height'] }}" @endif
 									alt="{{ $slide['image_alt'] ?: $slide['title'] }}"
+									loading="lazy"
+									decoding="async"
 									class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
 							</figure>
 							@endif

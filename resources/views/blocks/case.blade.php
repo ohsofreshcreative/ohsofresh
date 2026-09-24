@@ -54,29 +54,11 @@
 		</div>
 
 		@if (!empty($g_case['image']))
-		<figure data-gsap-element="img" class="__img m-0 mt-14 overflow-hidden radius-img">
-			<picture>
-				<img
-					class="h-auto w-full object-cover"
-					src="{{ $g_case['image']['url'] }}"
-					alt="{{ $g_case['image']['alt'] ?? '' }}"
-					loading="lazy"
-					decoding="async">
-			</picture>
-		</figure>
+		<x-picture :image="$g_case['image']" data-gsap-element="img" figureClass="__img m-0 mt-14 overflow-hidden radius-img" class="h-auto w-full object-cover" />
 		@endif
 
 		@if (!empty($g_case['image2']))
-		<figure data-gsap-element="img" class="__img m-0 mt-14 overflow-hidden radius-img">
-			<picture>
-				<img
-					class="h-auto w-full object-cover"
-					src="{{ $g_case['image2']['url'] }}"
-					alt="{{ $g_case['image2']['alt'] ?? '' }}"
-					loading="lazy"
-					decoding="async">
-			</picture>
-		</figure>
+		<x-picture :image="$g_case['image2']" data-gsap-element="img" figureClass="__img m-0 mt-14 overflow-hidden radius-img" class="h-auto w-full object-cover" />
 		@endif
 	</div>
 </section>

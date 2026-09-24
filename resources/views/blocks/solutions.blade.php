@@ -31,13 +31,13 @@
 				@if (!empty($item['image']['url']) || !empty($item['image2']['url']) || !empty($item['image3']['url']))
 				<div class="flex gap-3 opacity-50">
 					@if (!empty($item['image']['url']))
-					<img class="w-10 h-10 mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+					<x-picture :image="$item['image']" class="w-10 h-10 mb-6" />
 					@endif
 					@if (!empty($item['image2']['url']))
-					<img class="w-10 h-10 mb-6" src="{{ $item['image2']['url'] }}" alt="{{ $item['image2']['alt'] ?? '' }}" />
+					<x-picture :image="$item['image2']" class="w-10 h-10 mb-6" />
 					@endif
 					@if (!empty($item['image3']['url']))
-					<img class="w-10 h-10 mb-6" src="{{ $item['image3']['url'] }}" alt="{{ $item['image3']['alt'] ?? '' }}" />
+					<x-picture :image="$item['image3']" class="w-10 h-10 mb-6" />
 					@endif
 				</div>
 				@endif

@@ -4,7 +4,7 @@
 		<div class="__content relative bg-white rounded-4xl p-6">
 			@if (has_post_thumbnail())
 			<div class="block rounded-2xl overflow-hidden">
-				<img src="{{ get_the_post_thumbnail_url(null, 'large') }}" alt="{{ get_the_title() }}" class="w-full img-s object-cover">
+				{!! get_the_post_thumbnail(null, 'large', ['class' => 'w-full img-s object-cover', 'alt' => get_the_title(), 'loading' => 'lazy']) !!}
 			</div>
 			@endif
 			<h6 class="mt-6">

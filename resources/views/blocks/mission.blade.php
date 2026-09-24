@@ -14,11 +14,7 @@
 		<source src="{{ $g_mission['video'] }}" type="video/mp4">
 	</video>
 	@elseif(!empty($g_mission['image']))
-	<figure class="absolute inset-0 w-full h-full z-0 m-0">
-		<picture class="w-full h-full">
-			<img src="{{ $g_mission['image']['url'] }}" alt="{{ $g_mission['image']['alt'] }}" class="w-full h-full object-cover" />
-		</picture>
-	</figure>
+	<x-picture :image="$g_mission['image']" figureClass="absolute inset-0 w-full h-full z-0 m-0" class="w-full h-full object-cover" />
 	@endif
 
 	@if (!empty($g_mission['video']) || !empty($g_mission['image']))

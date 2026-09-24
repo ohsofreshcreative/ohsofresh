@@ -10,11 +10,7 @@
 	])>
 
 	@if (!empty($g_banner['image']))
-	<figure class="absolute inset-x-0 top-0 w-full h-[40svh] sm:h-full z-0 m-0">
-		<picture class="w-full h-full">
-			<img src="{{ $g_banner['image']['url'] }}" alt="{{ $g_banner['image']['alt'] }}" class="w-full h-full object-cover" />
-		</picture>
-	</figure>
+	<x-picture :image="$g_banner['image']" figureClass="absolute inset-x-0 top-0 w-full h-[40svh] sm:h-full z-0 m-0" class="w-full h-full object-cover" />
 	@endif
 
 	@if (!empty($g_banner['video']) || !empty($g_banner['image']))

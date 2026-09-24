@@ -117,6 +117,7 @@ class Products extends Block
 			$thumb_id = get_post_thumbnail_id($post->ID);
 			$terms    = get_the_terms($post->ID, 'offer_category');
 			$post_cats = [];
+			$image = $thumb_id ? wp_get_attachment_image_src($thumb_id, 'large') : false;
 
 			if ($terms && !is_wp_error($terms)) {
 				foreach ($terms as $term) {
@@ -126,12 +127,14 @@ class Products extends Block
 			}
 
 			$offer_children[] = [
-				'id'         => $post->ID,
-				'title'      => $post->post_title,
-				'url'        => get_permalink($post->ID),
-				'image_url'  => $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : null,
-				'image_alt'  => $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '',
-				'categories' => $post_cats,
+				'id'           => $post->ID,
+				'title'        => $post->post_title,
+				'url'          => get_permalink($post->ID),
+				'image_url'    => $image ? $image[0] : null,
+				'image_width'  => $image ? $image[1] : null,
+				'image_height' => $image ? $image[2] : null,
+				'image_alt'    => $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '',
+				'categories'   => $post_cats,
 			];
 		}
 		wp_reset_postdata();

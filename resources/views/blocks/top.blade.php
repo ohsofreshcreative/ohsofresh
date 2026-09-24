@@ -10,11 +10,7 @@
 	])>
 
 	@if (!empty($g_top['image']))
-	<figure class="__img absolute inset-0 z-0 m-0">
-		<picture class="block w-full h-full">
-			<img class="w-full h-full object-cover" src="{{ $g_top['image']['url'] }}" alt="{{ $g_top['image']['alt'] ?? '' }}">
-		</picture>
-	</figure>
+	<x-picture :image="$g_top['image']" figureClass="__img absolute inset-0 z-0 m-0" class="w-full h-full object-cover" />
 	@endif
 
 	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(21, 25, 35, 1) 0%, rgba(21, 25, 35, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.4) 100%);"></div>

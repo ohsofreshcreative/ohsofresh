@@ -10,11 +10,7 @@
 	])>
 
 	@if (!empty($g_contact_1['image']['url']))
-		<figure class="absolute inset-0 m-0 z-0">
-			<picture>
-				<img src="{{ $g_contact_1['image']['url'] }}" alt="" class="w-full h-full object-cover object-right">
-			</picture>
-		</figure>
+		<x-picture :image="$g_contact_1['image']" figureClass="absolute inset-0 m-0 z-0" class="w-full h-full object-cover object-right" />
 		@endif
 
 	<div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(0deg, rgba(16, 19, 27, 1) 0%, rgba(16, 19, 27, 0) 60%), linear-gradient(90deg, rgba(41, 7, 81, 1) 0%, rgba(41, 7, 81, 0.6) 100%);"></div>
@@ -41,6 +37,8 @@
 							<img
 								class=""
 								src="{{ $social['image']['url'] }}"
+								@if (!empty($social['image']['width'])) width="{{ $social['image']['width'] }}" @endif
+								@if (!empty($social['image']['height'])) height="{{ $social['image']['height'] }}" @endif
 								alt="{{ $social['image']['alt'] ?: 'Social media' }}"
 								loading="lazy"
 								decoding="async">

@@ -72,6 +72,8 @@
                         <img
                           class="__icon size-14 object-contain object-left-top opacity-50 grayscale"
                           src="{{ $service['icon']['url'] }}"
+                          @if (!empty($service['icon']['width'])) width="{{ $service['icon']['width'] }}" @endif
+                          @if (!empty($service['icon']['height'])) height="{{ $service['icon']['height'] }}" @endif
                           alt=""
                           loading="lazy"
                           decoding="async">

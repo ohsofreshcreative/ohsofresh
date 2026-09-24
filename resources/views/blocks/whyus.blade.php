@@ -29,7 +29,7 @@
 				@if(!empty($tile_2))
 				<div class="md:col-span-3 relative radius overflow-hidden min-h-[260px] p-8 md:p-10 flex flex-col justify-between">
 					@if(!empty($tile_2['image']['url']))
-					<img src="{{ $tile_2['image']['url'] }}" alt="{{ $tile_2['image']['alt'] ?? '' }}" class="absolute inset-0 w-full h-full object-cover z-0" />
+					<x-picture :image="$tile_2['image']" class="absolute inset-0 w-full h-full object-cover z-0" />
 					<div class="absolute inset-0 bg-black/60 z-[1]"></div>
 					@endif
 					<div class="relative z-10 flex flex-col justify-end h-full">
@@ -89,7 +89,7 @@
 			@if(!empty($tile_5))
 			<div class="lg:col-span-1 relative radius overflow-hidden min-h-[500px] lg:min-h-full p-6 flex flex-col justify-end">
 				@if(!empty($tile_5['image']['url']))
-				<img src="{{ $tile_5['image']['url'] }}" alt="{{ $tile_5['image']['alt'] ?? '' }}" class="absolute inset-0 w-full h-full object-cover z-0" />
+				<x-picture :image="$tile_5['image']" class="absolute inset-0 w-full h-full object-cover z-0" />
 				@endif
 
 				<div class="relative z-10 bg-primary rounded-[18px] p-6 text-white border-2 border-white/15 backdrop-blur-sm shadow-xl">

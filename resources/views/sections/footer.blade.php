@@ -9,7 +9,13 @@
 					@if(!empty($footer_contact['address']))
 					@if(!empty($logo_footer))
 					<a href="{{ home_url('/') }}" class="block max-w-[180px]">
-						<img src="{{ $logo_footer['url'] }}" alt="{{ $logo_footer['alt'] ?? get_bloginfo('name') }}" class="w-full h-auto object-contain" />
+						<img
+							src="{{ $logo_footer['url'] }}"
+							@if (!empty($logo_footer['width'])) width="{{ $logo_footer['width'] }}" @endif
+							@if (!empty($logo_footer['height'])) height="{{ $logo_footer['height'] }}" @endif
+							alt="{{ $logo_footer['alt'] ?? get_bloginfo('name') }}"
+							loading="lazy"
+							class="w-full h-auto object-contain" />
 					</a>
 					@endif
 					<div class="__txt mt-2">

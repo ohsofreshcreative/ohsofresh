@@ -19,7 +19,11 @@
 					<figure class="__img absolute inset-0 m-0">
 						<img
 							src="{{ $item['image_url'] }}"
+							@if (!empty($item['image_width'])) width="{{ $item['image_width'] }}" @endif
+							@if (!empty($item['image_height'])) height="{{ $item['image_height'] }}" @endif
 							alt="{{ $item['image_alt'] ?: $item['title'] }}"
+							loading="lazy"
+							decoding="async"
 							class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110">
 					</figure>
 					@endif

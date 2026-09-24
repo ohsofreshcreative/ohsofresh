@@ -136,6 +136,21 @@ add_action('after_setup_theme', function () {
 	add_theme_support('post-thumbnails');
 
 	/**
+	 * Register image sizes matching the `img-*` classes in resources/css/variables.scss,
+	 * so ACF image fields (return_format 'array') expose them via `sizes` for srcset.
+	 *
+	 * @link https://developer.wordpress.org/reference/functions/add_image_size/
+	 */
+	add_image_size('img-xs', 176, 176, false);
+	add_image_size('img-s', 240, 240, false);
+	add_image_size('img-m', 280, 280, false);
+	add_image_size('img-md', 304, 304, false);
+	add_image_size('img-l', 424, 424, false);
+	add_image_size('img-xl', 496, 496, false);
+	add_image_size('img-2xl', 560, 560, false);
+	add_image_size('img-3xl', 664, 664, false);
+
+	/**
 	 * Enable responsive embed support.
 	 *
 	 * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#responsive-embedded-content

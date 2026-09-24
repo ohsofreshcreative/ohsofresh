@@ -37,23 +37,12 @@
 
             <div class="__row relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
               @if (!empty($item['image']))
-                <figure data-gsap-element="img" class="__img m-0">
-                  <img
-                    class="w-full object-cover radius-img b-shadow"
-                    src="{{ $item['image']['url'] }}"
-                    alt="{{ $item['image']['alt'] ?? '' }}"
-                    loading="lazy">
-                </figure>
+                <x-picture :image="$item['image']" data-gsap-element="img" figureClass="__img m-0" class="w-full object-cover radius-img b-shadow" />
               @endif
 
               <div class="__content">
                 @if (!empty($item['icon']))
-                  <img
-                    data-gsap-element="img"
-                    class="__icon"
-                    src="{{ $item['icon']['url'] }}"
-                    alt="{{ $item['icon']['alt'] ?? '' }}"
-                    loading="lazy">
+                  <x-picture :image="$item['icon']" data-gsap-element="img" class="__icon" />
                 @endif
 
                 @if (!empty($item['header']))

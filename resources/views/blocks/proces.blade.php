@@ -38,13 +38,7 @@
               'is-' . ($item['color'] ?? 'yellow'),
             ])>
             @if (!empty($item['image']))
-              <img
-                class="__background absolute inset-0 z-0 h-full w-full object-cover"
-                src="{{ $item['image']['url'] }}"
-                alt=""
-                loading="lazy"
-                decoding="async"
-                aria-hidden="true">
+              <x-picture :image="$item['image']" class="__background absolute inset-0 z-0 h-full w-full object-cover" aria-hidden="true" />
             @endif
 
             <span class="__background-overlay absolute inset-0 z-0" aria-hidden="true"></span>

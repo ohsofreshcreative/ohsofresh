@@ -34,7 +34,11 @@
 				<figure class="m-0 overflow-hidden aspect-[4/3]">
 					<img
 						src="{{ $child['image_url'] }}"
+						@if (!empty($child['image_width'])) width="{{ $child['image_width'] }}" @endif
+						@if (!empty($child['image_height'])) height="{{ $child['image_height'] }}" @endif
 						alt="{{ $child['image_alt'] }}"
+						loading="lazy"
+						decoding="async"
 						class="w-full h-full object-contain transition-transform duration-300 hover:scale-105 p-10">
 				</figure>
 				@endif

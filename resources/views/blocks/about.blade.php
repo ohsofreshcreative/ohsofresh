@@ -45,11 +45,7 @@
 
 			@if (!empty($g_about['image']))
 			<div data-gsap-element="img" class="__img h-full">
-				<figure class="w-full h-full m-0">
-					<picture class="w-full h-full">
-						<img class="w-full h-full object-cover radius-img" src="{{ $g_about['image']['url'] }}" alt="{{ $g_about['image']['alt'] ?? '' }}">
-					</picture>
-				</figure>
+				<x-picture :image="$g_about['image']" figureClass="w-full h-full m-0" class="w-full h-full object-cover radius-img" />
 			</div>
 			@endif
 

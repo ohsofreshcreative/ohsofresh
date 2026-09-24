@@ -16,11 +16,7 @@
 					<h4 data-gsap-element="header" class=" text-primary">{{ $g_accordion['title'] }}</h4>
 					<div data-gsap-element="txt" class="m-header">{!! $g_accordion['text'] !!}</div>
 					@if (!empty($g_accordion['image']))
-					<figure data-gsap-element="img" class="__img order1 h-full mt-8">
-						<picture>
-							<img class="object-cover img-l w-full radius-img" src="{{ $g_accordion['image']['url'] }}" alt="{{ $g_accordion['image']['alt'] ?? '' }}">
-						</picture>
-					</figure>
+					<x-picture :image="$g_accordion['image']" data-gsap-element="img" figureClass="__img order1 h-full mt-8" class="object-cover img-l w-full radius-img" />
 					@endif
 
 					@if (!empty($g_accordion['button']))

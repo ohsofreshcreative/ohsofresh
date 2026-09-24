@@ -19,10 +19,11 @@
         @endif
 
         @if (!empty($g_hero['image']))
-        <img
-            src="{{ $g_hero['image']['url'] }}"
-            alt="{{ $g_hero['image']['alt'] }}"
-            class="video-fallback absolute inset-0 w-full h-full object-cover transition-[opacity,visibility] duration-300 ease-in-out" />
+        <x-picture
+            :image="$g_hero['image']"
+            class="video-fallback absolute inset-0 w-full h-full object-cover transition-[opacity,visibility] duration-300 ease-in-out"
+            loading="eager"
+            fetchpriority="high" />
         @endif
 
     </div>

@@ -21,21 +21,17 @@
               'pt-20 lg:pt-34' => $loop->iteration === 3,
             ])>
             @if (!empty($item['image']))
-              <figure
-                data-gsap-element="img"
-                @class([
+              @php
+                $attributeImageFigureClass = Illuminate\Support\Arr::toCssClasses([
                   '__img relative z-0 m-0 w-full sm:w-1/2 lg:w-[407px] shrink-0',
                   'lg:order-2 lg:-ml-[70px]' => !$loop->first,
-                ])>
-                <picture>
-                  <img
-                    class="w-full h-[300px] lg:h-[413px] object-cover radius-img b-shadow"
-                    src="{{ $item['image']['url'] }}"
-                    alt="{{ $item['image']['alt'] ?? '' }}"
-                    loading="lazy"
-                    decoding="async">
-                </picture>
-              </figure>
+                ]);
+              @endphp
+              <x-picture
+                :image="$item['image']"
+                data-gsap-element="img"
+                :figureClass="$attributeImageFigureClass"
+                class="w-full h-[300px] lg:h-[413px] object-cover radius-img b-shadow" />
             @endif
 
             <div

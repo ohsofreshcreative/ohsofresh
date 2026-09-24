@@ -18,11 +18,7 @@
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-20">
 			<div>
 				@if (!empty($g_checks['image']))
-				<figure data-gsap-element="img" class="__img h-full order1">
-					<picture>
-						<img class="radius-img max-h-[280px] w-full object-cover m-img" src="{{ $g_checks['image']['url'] }}" alt="{{ $g_checks['image']['alt'] ?? '' }}">
-					</picture>
-				</figure>
+				<x-picture :image="$g_checks['image']" data-gsap-element="img" figureClass="__img h-full order1" class="radius-img max-h-[280px] w-full object-cover m-img" />
 				@endif
 
 				<h2 data-gsap-element="header" class="text-h4 m-header text-primary">{{ $g_checks['header'] }}</h2>

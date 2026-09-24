@@ -98,13 +98,16 @@ class Slider extends Block
             $categories = !is_wp_error($terms) && !empty($terms)
                 ? array_filter($terms, fn ($term) => $term->slug !== 'wszystkie')
                 : [];
+            $image = $thumb_id ? wp_get_attachment_image_src($thumb_id, 'large') : false;
 
             $slides[] = [
-                'title'      => $post->post_title,
-                'url'        => get_permalink($post->ID),
-                'image_url'  => $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : null,
-                'image_alt'  => $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '',
-                'categories' => wp_list_pluck($categories, 'name'),
+                'title'        => $post->post_title,
+                'url'          => get_permalink($post->ID),
+                'image_url'    => $image ? $image[0] : null,
+                'image_width'  => $image ? $image[1] : null,
+                'image_height' => $image ? $image[2] : null,
+                'image_alt'    => $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '',
+                'categories'   => wp_list_pluck($categories, 'name'),
             ];
         }
 

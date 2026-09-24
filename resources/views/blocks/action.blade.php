@@ -13,11 +13,7 @@
 
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
 			@if (!empty($g_action['image']))
-			<figure data-gsap-element="img" class="__img order1 !m-0">
-				<picture>
-					<img class="radius w-full aspect-square object-cover" src="{{ $g_action['image']['url'] }}" alt="{{ $g_action['image']['alt'] ?? '' }}">
-				</picture>
-			</figure>
+			<x-picture :image="$g_action['image']" data-gsap-element="img" figureClass="__img order1 !m-0" class="radius w-full aspect-square object-cover" />
 			@endif
 
 			<div class="__content order2">

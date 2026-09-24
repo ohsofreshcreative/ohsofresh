@@ -95,16 +95,7 @@
                 'lg:grid-cols-2' => !empty($item['image']),
               ])>
                 @if (!empty($item['image']))
-                  <figure class="__img m-0 overflow-hidden radius-img">
-                    <picture>
-                      <img
-                        class="w-full aspect-[4/3] object-cover"
-                        src="{{ $item['image']['url'] }}"
-                        alt="{{ $item['image']['alt'] ?? '' }}"
-                        loading="lazy"
-                        decoding="async">
-                    </picture>
-                  </figure>
+                  <x-picture :image="$item['image']" figureClass="__img m-0 overflow-hidden radius-img" class="w-full aspect-[4/3] object-cover" />
                 @endif
 
                 <div class="__content">

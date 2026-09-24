@@ -1459,11 +1459,6 @@
           "color": "#fff"
         },
         {
-          "name": "Body",
-          "slug": "body",
-          "color": "rgb(var(--body))"
-        },
-        {
           "name": "Primary",
           "slug": "primary",
           "color": "rgb(var(--primary))"
@@ -1597,11 +1592,6 @@
           "name": "Primary (Light)",
           "slug": "primary-light",
           "color": "var(--color-primary-300)"
-        },
-        {
-          "name": "Secondary (Light)",
-          "slug": "secondary-light",
-          "color": "var(--color-secondary-200)"
         },
         {
           "name": "Secondary (Lighter)",

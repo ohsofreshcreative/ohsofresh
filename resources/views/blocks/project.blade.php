@@ -14,16 +14,7 @@
     'lg:grid-cols-2 lg:gap-20' => !empty($g_project['image']),
   ])>
     @if (!empty($g_project['image']))
-      <figure data-gsap-element="img" class="__img order1 m-0 self-start lg:sticky lg:top-24">
-        <picture>
-          <img
-            class="h-auto w-full object-cover radius-img b-shadow"
-            src="{{ $g_project['image']['url'] }}"
-            alt="{{ $g_project['image']['alt'] ?? '' }}"
-            loading="lazy"
-            decoding="async">
-        </picture>
-      </figure>
+      <x-picture :image="$g_project['image']" data-gsap-element="img" figureClass="__img order1 m-0 self-start lg:sticky lg:top-24" class="h-auto w-full object-cover radius-img b-shadow" />
     @endif
 
     <div @class([

@@ -16,7 +16,12 @@ $languageLinks = shortcode_exists('gt-link') ? [
 	<div class="items-center justify-between hidden h-full py-4 px-12 mx-auto lg:flex">
 		<a class="brand shrink-0" href="{{ home_url('/') }}">
 			@if ($logo)
-			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12">
+			<img
+				src="{{ $logo['url'] }}"
+				@if (!empty($logo['width'])) width="{{ $logo['width'] }}" @endif
+				@if (!empty($logo['height'])) height="{{ $logo['height'] }}" @endif
+				alt="{{ $logo['alt'] ?? 'Logo' }}"
+				class="w-auto h-12">
 			@else
 			<span class="text-xl font-bold">{{ $siteName }}</span>
 			@endif
@@ -56,7 +61,12 @@ $languageLinks = shortcode_exists('gt-link') ? [
 	<div class="flex items-center justify-between p-4 mobile-menu fixed-top lg:hidden">
 		<a class="brand shrink-0" href="{{ home_url('/') }}">
 			@if ($logo)
-			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12">
+			<img
+				src="{{ $logo['url'] }}"
+				@if (!empty($logo['width'])) width="{{ $logo['width'] }}" @endif
+				@if (!empty($logo['height'])) height="{{ $logo['height'] }}" @endif
+				alt="{{ $logo['alt'] ?? 'Logo' }}"
+				class="w-auto h-12">
 			@else
 			<span class="text-lg font-bold">{{ $siteName }}</span>
 			@endif
@@ -92,7 +102,16 @@ $languageLinks = shortcode_exists('gt-link') ? [
 		aria-label="Menu mobilne">
 		<div class="p-4 relative z-10">
 			<div class="flex items-center justify-between mb-6">
-				<span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12"></a></span>
+				<span class="">
+					<a class="brand shrink-0" href="{{ home_url('/') }}">
+						<img
+							src="{{ $logo['url'] }}"
+							@if (!empty($logo['width'])) width="{{ $logo['width'] }}" @endif
+							@if (!empty($logo['height'])) height="{{ $logo['height'] }}" @endif
+							alt="{{ $logo['alt'] ?? 'Logo' }}"
+							class="w-auto h-12">
+					</a>
+				</span>
 				<button
 					@click="mobileOpen = false"
 					class="p-2 text-white rounded-md">

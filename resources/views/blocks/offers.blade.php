@@ -29,12 +29,7 @@
 			@foreach ($r_offers as $item)
 			<div data-gsap-element="card" class="__card group relative overflow-hidden min-h-80 flex flex-col justify-center radius p-8">
 				@if (!empty($item['image']['url']))
-				<figure class="absolute inset-0 m-0">
-					<picture>
-						<source srcset="{{ $item['image']['url'] }}" type="image/jpeg" />
-						<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
-					</picture>
-				</figure>
+				<x-picture :image="$item['image']" figureClass="absolute inset-0 m-0" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
 				<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/20"></div>
 				@endif
 				@if (!empty($item['button1']))

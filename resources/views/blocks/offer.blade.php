@@ -16,7 +16,7 @@
 			<div id="offerlist-{{ $loop->iteration }}" class="__col offer-list relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-20">
 				@if (!empty($item['image']['url']))
 				<div data-gsap-element="img" class="__img img relative z-10">
-					<img class="b-shadow w-full object-cover" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}">
+					<x-picture :image="$item['image']" class="b-shadow w-full object-cover" />
 				</div>
 				@endif
 
@@ -40,7 +40,7 @@
 
 				@if (!empty($item['background_image']['url']))
 				<div data-gsap-element="img" aria-hidden="true" class="__decoration bg-sign absolute z-0 pointer-events-none">
-					<img src="{{ $item['background_image']['url'] }}" alt="">
+					<x-picture :image="$item['background_image']" />
 				</div>
 				@endif
 			</div>

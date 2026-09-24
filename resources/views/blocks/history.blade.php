@@ -19,11 +19,7 @@
 			@if (!empty($g_history['image']) || !empty($r_history))
 			<div class="relative order1">
 				@if (!empty($g_history['image']))
-				<figure data-gsap-element="img" class="__img h-full">
-					<picture>
-						<img class="radius-img max-h-[504px] w-full object-cover" src="{{ $g_history['image']['url'] }}" alt="{{ $g_history['image']['alt'] ?? '' }}">
-					</picture>
-				</figure>
+				<x-picture :image="$g_history['image']" data-gsap-element="img" figureClass="__img h-full" class="radius-img max-h-[504px] w-full object-cover" />
 				@endif
 
 				@if (!empty($r_history))
