@@ -1,5 +1,7 @@
 <!-- hero --->
 
+@php($hero_uid = wp_unique_id('hero-'))
+
 <section
     data-gsap-anim="section"
     @if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -10,10 +12,10 @@
     ])>
 
     @if (!empty($g_hero['video']) || !empty($g_hero['image']))
-    <div class="absolute inset-x-0 top-0 h-[40svh] sm:h-full overflow-hidden z-0" id="heroVideoWrapper">
+    <div class="absolute inset-x-0 top-0 h-[40svh] sm:h-full overflow-hidden z-0" id="{{ $hero_uid }}-video-wrapper">
 
         @if (!empty($g_hero['video']))
-        <video class="absolute inset-0 w-full h-full object-cover" id="myVideo" autoplay loop muted playsinline>
+        <video class="absolute inset-0 w-full h-full object-cover" id="{{ $hero_uid }}-video" autoplay loop muted playsinline>
             <source src="{{ $g_hero['video'] }}" type="video/mp4">
         </video>
         @endif
@@ -68,8 +70,8 @@
     @if (!empty($g_hero['video']))
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const video   = document.getElementById('myVideo');
-        const wrapper = document.getElementById('heroVideoWrapper');
+        const video   = document.getElementById('{{ $hero_uid }}-video');
+        const wrapper = document.getElementById('{{ $hero_uid }}-video-wrapper');
         if (!video || !wrapper) return;
 
         const markPlaying = () => wrapper.classList.add('is-playing');

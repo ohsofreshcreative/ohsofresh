@@ -1,5 +1,7 @@
 <!--- video -->
 
+@php($video_uid = wp_unique_id('video-'))
+
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -15,14 +17,14 @@
 		@if (!empty($g_video['video']))
 		<div class="video-wrapper relative">
 			<video
-				id="customVideo"
+				id="{{ $video_uid }}-video"
 				class="w-full">
 				<source src="{{ $g_video['video'] }}" type="video/mp4">
 				Twoja przeglądarka nie obsługuje odtwarzania wideo.
 			</video>
 
 			<button
-				id="customPlayBtn"
+				id="{{ $video_uid }}-play-btn"
 				class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition"
 				aria-label="Odtwórz wideo">
 				<img src="http://windes.local/wp-content/uploads/2025/06/play.svg" alt="Play" class="w-20 h-20">
@@ -37,8 +39,8 @@
 
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
-  const video = document.getElementById('customVideo');
-  const playBtn = document.getElementById('customPlayBtn');
+  const video = document.getElementById('{{ $video_uid }}-video');
+  const playBtn = document.getElementById('{{ $video_uid }}-play-btn');
 
   if (video && playBtn) {
     playBtn.addEventListener('click', () => {
