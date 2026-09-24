@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.from(img, {
         opacity: 0,
         y: 50,
-        filter: 'blur(15px)',
         duration: 1,
         ease: 'power2.out',
         scrollTrigger: {
@@ -89,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.from(element, {
         opacity: 0,
         y: 50,
-        filter: 'blur(15px)',
         duration: 1,
         ease: 'power2.out',
         delay: index * 0.1,
@@ -121,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.to(sorted, {
         opacity: 1,
         y: 0,
-        filter: 'blur(0px)',
         duration: 1,
         ease: 'power2.out',
         stagger: { amount: 0.5, each: 0.1 },
@@ -138,9 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /*--- LINE ----*/
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof gsap !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 document.addEventListener('DOMContentLoaded', function () {
+  if (typeof gsap === 'undefined') return;
+
   const line = document.querySelector('.animated-line');
   if (!line) return;
 

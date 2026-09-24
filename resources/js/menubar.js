@@ -1,30 +1,33 @@
-import $ from 'jquery';
-
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   let c, currentScrollTop = 0;
-  const navbar = $('.fixed-top');
+  const navbar = document.querySelector('.fixed-top');
+  if (!navbar) return;
 
-  $(window).on('scroll', function () {
-    const a = $(window).scrollTop();
-    const b = navbar.height();
+  window.addEventListener('scroll', function () {
+    const a = window.scrollY;
+    const b = navbar.offsetHeight;
 
     currentScrollTop = a;
 
     if (c < currentScrollTop && a > b) {
-      navbar.addClass('scrollUp').removeClass('scrollTop');
+      navbar.classList.add('scrollUp');
+      navbar.classList.remove('scrollTop');
     } else if (c > currentScrollTop && !(a <= b)) {
-      navbar.removeClass('scrollUp').addClass('scrollDown').removeClass('scrollTop');
-    } else if ($(document).scrollTop() < 500) {
-      navbar.addClass('scrollTop').removeClass('scrollUp scrollDown');
+      navbar.classList.remove('scrollUp');
+      navbar.classList.add('scrollDown');
+      navbar.classList.remove('scrollTop');
+    } else if (document.documentElement.scrollTop < 500) {
+      navbar.classList.add('scrollTop');
+      navbar.classList.remove('scrollUp', 'scrollDown');
     }
 
     c = currentScrollTop;
   });
 });
 /*--- Przełącznik języka GTranslate ---*/
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const targets = document.querySelectorAll('[data-language-target]');
   if (!targets.length) return;
 

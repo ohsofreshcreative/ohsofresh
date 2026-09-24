@@ -356,6 +356,12 @@ add_action('wp_enqueue_scripts', function () {
 	 * Rejestracja i ładowanie skryptów.
 	 */
 
+	// Strony koszyka/checkout/konta WooCommerce nie renderują bloków ACF
+	// z animacjami (data-gsap-anim) — nie ładuj tam GSAP niepotrzebnie.
+	if (function_exists('is_cart') && (is_cart() || is_checkout() || is_account_page())) {
+		return;
+	}
+
 	// Ładuj GSAP i ScrollTrigger z CDN.
 	// Trzeci argument (tablica []) oznacza brak zależności.
 	// Piąty argument (true) umieszcza skrypty w stopce.
@@ -363,6 +369,10 @@ add_action('wp_enqueue_scripts', function () {
 
 	// Ustawiamy zależność 'gsap-st-cdn' od 'gsap-cdn', aby załadowały się w dobrej kolejności.
 	wp_enqueue_script('gsap-st-cdn', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', ['gsap-cdn'], null, true);
+
+	// Skrypty są już w stopce — defer dodatkowo zwalnia je z blokowania parsera.
+	wp_script_add_data('gsap-cdn', 'strategy', 'defer');
+	wp_script_add_data('gsap-st-cdn', 'strategy', 'defer');
 }, 1); // Ustawiamy priorytet na 1, aby wykonało się BARDZO wcześnie.
 
 
