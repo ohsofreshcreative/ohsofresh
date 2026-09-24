@@ -1499,11 +1499,6 @@
           "color": "rgb(var(--p-500))"
         },
         {
-          "name": "Primary (700)",
-          "slug": "primary-700",
-          "color": "rgb(var(--p-700))"
-        },
-        {
           "name": "Primary (800)",
           "slug": "primary-800",
           "color": "rgb(var(--p-800))"
@@ -1532,11 +1527,6 @@
           "name": "Secondary (500)",
           "slug": "secondary-500",
           "color": "rgb(var(--s-500))"
-        },
-        {
-          "name": "Secondary (600)",
-          "slug": "secondary-600",
-          "color": "rgb(var(--s-600))"
         },
         {
           "name": "Third",
