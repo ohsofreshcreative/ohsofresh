@@ -12,7 +12,7 @@
     ])>
 
     @if (!empty($g_hero['video']) || !empty($g_hero['image']))
-    <div class="absolute inset-x-0 top-0 h-[40svh] sm:h-full overflow-hidden z-0" id="{{ $hero_uid }}-video-wrapper">
+    <div class="__video-wrapper absolute inset-x-0 top-0 h-[40svh] sm:h-full overflow-hidden z-0" id="{{ $hero_uid }}-video-wrapper">
 
         @if (!empty($g_hero['video']))
         <video class="absolute inset-0 w-full h-full object-cover" id="{{ $hero_uid }}-video" autoplay loop muted playsinline>

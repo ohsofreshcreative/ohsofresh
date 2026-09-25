@@ -11,7 +11,7 @@
 		-webkit-text-fill-color: transparent;
 	}
 
-	#heroVideoWrapper {
+	.__video-wrapper {
 		&::after {
 			content: "";
 			position: absolute;
@@ -29,7 +29,7 @@
 		visibility: visible;
 	}
 
-	#heroVideoWrapper.is-playing .video-fallback {
+	.__video-wrapper.is-playing .video-fallback {
 		opacity: 0;
 		visibility: hidden;
 	}
