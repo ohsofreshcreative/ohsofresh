@@ -13,7 +13,7 @@
 							src="{{ $logo_footer['url'] }}"
 							@if (!empty($logo_footer['width'])) width="{{ $logo_footer['width'] }}" @endif
 							@if (!empty($logo_footer['height'])) height="{{ $logo_footer['height'] }}" @endif
-							alt="{{ $logo_footer['alt'] ?? get_bloginfo('name') }}"
+							alt="{{ $logo_footer['alt'] ?: get_bloginfo('name') }}"
 							loading="lazy"
 							class="w-full h-auto object-contain" />
 					</a>
@@ -57,7 +57,7 @@
 	<div class="c-main flex flex-col md:flex-row justify-between gap-6 py-10 footer-bottom">
 		<p class="">Copyright ©{{ date('Y') }} {{ get_bloginfo('name') }}. All Rights Reserved</p>
 		<p class="flex gap-2">Designed &amp; Developed by
-			<a target="_blank" rel="nofollow" href="https://www.ohsofresh.pl" title="OhSoFresh"><img class="oh" src="{{ get_template_directory_uri() }}/resources/images/ohsofresh.svg"></a>
+			<a target="_blank" rel="nofollow" href="https://www.ohsofresh.pl" title="OhSoFresh"><img class="oh" src="{{ get_template_directory_uri() }}/resources/images/ohsofresh.svg" alt="OhSoFresh"></a>
 		</p>
 	</div>
 

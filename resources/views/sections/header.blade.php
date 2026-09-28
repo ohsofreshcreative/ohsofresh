@@ -20,7 +20,7 @@ $languageLinks = shortcode_exists('gt-link') ? [
 				src="{{ $logo['url'] }}"
 				@if (!empty($logo['width'])) width="{{ $logo['width'] }}" @endif
 				@if (!empty($logo['height'])) height="{{ $logo['height'] }}" @endif
-				alt="{{ $logo['alt'] ?? 'Logo' }}"
+				alt="{{ $logo['alt'] ?: $siteName }}"
 				class="w-auto h-12">
 			@else
 			<span class="text-xl font-bold">{{ $siteName }}</span>
@@ -65,7 +65,7 @@ $languageLinks = shortcode_exists('gt-link') ? [
 				src="{{ $logo['url'] }}"
 				@if (!empty($logo['width'])) width="{{ $logo['width'] }}" @endif
 				@if (!empty($logo['height'])) height="{{ $logo['height'] }}" @endif
-				alt="{{ $logo['alt'] ?? 'Logo' }}"
+				alt="{{ $logo['alt'] ?: $siteName }}"
 				class="w-auto h-12">
 			@else
 			<span class="text-lg font-bold">{{ $siteName }}</span>
@@ -108,7 +108,7 @@ $languageLinks = shortcode_exists('gt-link') ? [
 							src="{{ $logo['url'] }}"
 							@if (!empty($logo['width'])) width="{{ $logo['width'] }}" @endif
 							@if (!empty($logo['height'])) height="{{ $logo['height'] }}" @endif
-							alt="{{ $logo['alt'] ?? 'Logo' }}"
+							alt="{{ $logo['alt'] ?: $siteName }}"
 							class="w-auto h-12">
 					</a>
 				</span>
