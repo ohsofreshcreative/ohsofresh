@@ -13,7 +13,7 @@
 							src="{{ $logo_footer['url'] }}"
 							@if (!empty($logo_footer['width'])) width="{{ $logo_footer['width'] }}" @endif
 							@if (!empty($logo_footer['height'])) height="{{ $logo_footer['height'] }}" @endif
-							alt="{{ $logo_footer['alt'] ?: get_bloginfo('name') }}"
+							alt="ohsofresh"
 							loading="lazy"
 							class="w-full h-auto object-contain" />
 					</a>
