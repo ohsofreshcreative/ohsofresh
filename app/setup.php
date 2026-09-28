@@ -586,3 +586,14 @@ function get_pdf_thumbnail_url($pdf_attachment_id)
 		return wp_get_attachment_url($pdf_attachment_id);
 	}
 }
+
+/*--- WPCF7 HONEYPOT ARIA LABEL ---*/
+add_filter('wpcf7_form_elements', function ($content) {
+    $content = preg_replace(
+        '/(<input\b[^>]*class="[^"]*\bwpcf7_hp_field\b[^"]*"[^>]*)(>)/i',
+        '$1 aria-label="Pole antyspamowe" aria-hidden="true"$2',
+        $content
+    );
+
+    return $content;
+});
