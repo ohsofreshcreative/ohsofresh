@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const targets = document.querySelectorAll('[data-language-target]');
   if (!targets.length) return;
 
+  const html = document.documentElement;
   let previousLanguage;
-  const syncLanguage = () => {
-    const cookie = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
-    const language = cookie && /(?:\/|%2f)en$/i.test(cookie[1]) ? 'en' : 'pl';
+
+  const setLanguage = (language) => {
     if (language === previousLanguage) return;
     previousLanguage = language;
 
@@ -43,10 +43,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
 
-  // GTranslate zapisuje cookie asynchronicznie, bez przeładowania strony.
+  // Google Translate dodaje do <html> klasę translated-ltr/rtl tylko gdy strona jest przetłumaczona.
+  // Cookie googtrans bywa zduplikowane (host + domena) i nieaktualne, więc jest tylko fallbackiem.
+  const detectLanguage = () => {
+    if (html.classList.contains('translated-ltr') || html.classList.contains('translated-rtl')) return 'en';
+    if (previousLanguage !== undefined) return 'pl';
+
+    const cookies = document.cookie.match(/(?:^|;\s*)googtrans=[^;]*/g) || [];
+    return cookies.some((cookie) => /(?:\/|%2f)en$/i.test(cookie.trim())) ? 'en' : 'pl';
+  };
+
+  const syncLanguage = () => setLanguage(detectLanguage());
+
+  targets.forEach((target) => {
+    target.addEventListener('click', () => {
+      setLanguage(target.dataset.languageTarget);
+    });
+  });
+
+  new MutationObserver(syncLanguage).observe(html, { attributes: true, attributeFilter: ['class'] });
   syncLanguage();
-  window.setInterval(() => {
-    if (!document.hidden) syncLanguage();
-  }, 300);
   window.addEventListener('pageshow', syncLanguage);
 });
